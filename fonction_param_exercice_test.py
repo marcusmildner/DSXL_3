@@ -229,9 +229,9 @@ def fonction_param_exercice() :
                                             str_fm2pBq1 =str_fm2pBq1+' = '+  sym.latex(f_dev.subs(x,sym.sqrt(2)))
                                         # fcan = '(x-1)^2 -6' 
                                         str_fcan = sym.latex(f_can)
-                                        #formecanpBq2et1 = r'x^2 - 2 x\times 1 + 1^2 - 6'     
-                                        with sym.evaluate(False):
-                                            f_semidev = a*(x**2-2*x0*x+x0**2)+y0
+                                        #formecanpBq2et1 = r'x^2 - 2 x\times 1 + 1^2 - 6'   
+                                        f_semidev = a* (x**2-2*x0*x+x0**2)+y0  		       
+                                        with sym.evaluate(False):                                           
                                             str_formecanpBq2et1 = sym.latex(f_semidev)
                                         #formecanpBq2et2 = r'x^2 - 2 x -5'  
                                         str_formecanpBq2et2 = str_fdev
@@ -290,7 +290,8 @@ def fonction_param_exercice() :
     return dico_exercice, liste_liste_parametres 
 
 
+#dico_exercice, liste_liste_parametres = fonction_param_exercice()
 
-
+#print(len(liste_liste_parametres))
 
 
