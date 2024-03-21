@@ -1,0 +1,25 @@
+\babel@toc {french}{}
+\contentsline {chapter}{Introduction}{i}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Organisation du document}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Liste d'exercices}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Exercice\_001}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Exercice\_002}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Exercice\_003}{8}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Créer un exercice : Le programme dsxl$\_$3$\_$exercice$\_$creation}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}L'onglet \underline {latex wrapper}}{11}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Etape 1 : Entrer le code Latex}{11}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Etape 2 : Définir les parties énoncés et corrections}{12}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Etape 3 : Définir le barème des questions}{15}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}Etape 4 : Définir les variables qui changeront en fonction de l'énoncé}{16}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}Etape 5 : Définir contraintes sur les variables et le fichier {\bf python\_contraintes.py}}{21}{subsection.3.1.5}%
+\contentsline {section}{\numberline {3.2}L'onglet \underline {python wrapper}}{23}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Etape 6 : Définir la fonction def $fonction\_param\_exercice()$ : }{23}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Etape 7 : Entrer les formules pour calculer les réponses }{27}{subsection.3.2.2}%
+\contentsline {section}{\numberline {3.3}L'onglet \underline {Testing Exercise}}{33}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Synthèse de ce qui a été fait jusqu'à présent}{33}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Intégration de {\bf $python\_contraintes.py$} dans {\bf $fonction\_param\_exercice\_run.py$}}{33}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Créer un devoir : Le programme dsxl$\_$3$\_$devoir$\_$creation}{35}{chapter.4}%
+\contentsline {chapter}{\numberline {A}Liste des mots clés}{37}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Mettre à jour ce document : dsxl$\_$3$\_$documentation$\_$creation}{39}{appendix.B}%
+\contentsline {chapter}{Bibliography}{41}{appendix*.5}%
+\contentsline {chapter}{Index}{43}{appendix*.6}%

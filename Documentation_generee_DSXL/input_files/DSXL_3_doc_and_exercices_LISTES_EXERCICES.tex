@@ -1,0 +1,598 @@
+
+\section{Exercice\_001}
+
+\index[notions]{Pythagore}
+\index[notions]{triangle rectangle}
+\index[notions]{triangle rectangle}
+\index[notions]{droites perpendiculaires}
+\index[notions]{aire triangle}
+\index[notions]{hauteur triangle}
+\begin{description}
+\item[Date de création : ]10/01/2024
+\item[Source : ]marcus
+\item[Liste des notions : ]Pythagore : triangle rectangle : triangle rectangle : droites perpendiculaires : aire triangle : hauteur triangle : 
+\item[Nombre de variantes de l'exercice : ]22
+\end{description}
+
+\centerline{\bf\large Barème utilisé pour l'exercice : 10 points / paramètre utilisé : numéro 0}
+
+
+
+\EXERCICE \SeulementModeEnonce{\points{10.0}}
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = $3$ et BC = $4$
+
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-4.3,-3.02) rectangle (7.28,6.3);
+\draw [line width=2.pt] (4.,3.)-- (-2.,0.);
+\draw [line width=2.pt] (-2.,0.)-- (4.,0.);
+\draw [line width=2.pt] (4.,0.)-- (4.,3.);
+\draw [line width=2.pt,domain=-4.3:7.28] plot(\x,{(--24.-6.*\x)/3.});
+\begin{scriptsize}
+\draw [fill=black] (-2.,0.) circle (2.5pt);
+\draw[color=black] (-1.86,0.37) node {$A$};
+\draw [fill=black] (4.,0.) circle (2.5pt);
+\draw[color=black] (4.14,0.37) node {$B$};
+\draw [fill=black] (4.,3.) circle (2.5pt);
+\draw[color=black] (4.14,3.37) node {$C$};
+\draw[color=black] (1.3,6.15) node {(d)};
+\draw [fill=uuuuuu] (2.8,2.4) circle (2.0pt);
+\draw[color=uuuuuu] (2.22,2.67) node {$H$};
+\end{scriptsize}
+\end{tikzpicture}
+
+
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC 
+On donnera une valeur approchée au millième. 
+} % fin énoncé 
+
+\correction{ %début énoncé 
+\points{4.0} %en pourcentage 
+ Le triangle ABC est rectangle en B, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 4^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25}\approx 5.000 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+ Calculer l'aire $S$ du triangle ABC
+} % fin énoncé 
+
+\correction{ %début énoncé 
+\points{2.0} %en pourcentage
+Comme le triangle ABC est rectangle en B on a :
+\begin{eqnarray*} 
+S &=& \frac{AB \times BC}{2} \\
+S &=& \frac{3\times 4}{2} \\
+S &=& 6 \mbox{ unité d'aire (u.a.)}
+\end{eqnarray*}
+} % fin correction 
+
+\item[3.] \enonce{ %début énoncé 
+ Soit H le pied de la hauteur du triangle ABC issu de B. Exprimer l'aire S en fonction de BH et AC. 
+} % fin énoncé 
+
+
+\correction{ %début énoncé 
+\points{2.0} %en pourcentage
+ On a : $ S = \frac{BH \times AC}{2} $ 
+} % fin correction 
+
+\item[4.] \enonce{ %début énoncé 
+ Determiner HB (on donnera une valeur arrondie au centième).
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ \points{2.0} %en pourcentage
+ On a : 
+\begin{eqnarray*} 
+S &=& \frac{BH \times AC}{2} \\
+6  &=& \frac{BH \times 5.000}{2} \\
+2\times 6 &=& BH \times 5.000 \\
+\frac{2\times 6}{5.000} & =& BH \\
+&& \mbox{Donc : }BH \approx 2.40
+\end{eqnarray*}
+} % fin correction 
+
+\end{description}
+
+
+\SeulementModeEnonce{}
+
+
+
+
+\section{Exercice\_002}
+
+\index[notions]{fonction logarithme}
+\index[notions]{fonction exponentielle}
+\index[notions]{limite de suite}
+\index[notions]{programme de calcul}
+\index[notions]{récurrence}
+\index[notions]{script python}
+\index[notions]{suite bornée}
+\index[notions]{suite monotone}
+\index[notions]{terminale spe}
+\begin{description}
+\item[Date de création : ]21/02/2024
+\item[Source : ]annales apmep, Baccalauréat Métropole20 mars 2023, sujet 1, exercice 3
+\item[Liste des notions : ]fonction logarithme : fonction exponentielle : limite de suite : programme de calcul : récurrence : script python : suite bornée : suite monotone : terminale spe : 
+\item[Nombre de variantes de l'exercice : ]166
+\end{description}
+
+\centerline{\bf\large Barème utilisé pour l'exercice : 10 points / paramètre utilisé : numéro 0}
+
+
+
+\EXERCICE
+
+\medskip
+
+Une entreprise a créé une Foire Aux Questions ("FAQ") sur son site internet.
+
+\medskip
+
+On étudie le nombre de questions qui y sont posées chaque mois.
+
+\bigskip
+
+\textbf{Partie A : Première modélisation}
+
+\medskip
+
+Dans cette partie, on admet que, chaque mois :
+
+\begin{itemize}
+\item[$\bullet~~$]$90$\,\% des questions déjà posées le mois précédent sont conservées sur la FAQ ;
+\item[$\bullet~~$]$130$ nouvelles questions sont ajoutées à la FAQ.
+\end{itemize}
+
+Au cours du premier mois, $300$ questions ont été posées.
+
+\medskip
+
+Pour estimer le nombre de questions, en centaines, présentes sur la FAQ le $n$-ième
+mois, on modélise la situation ci-dessus à l'aide de la suite $\left(u_n\right)$ définie par : 
+\begin{center}$u_1 =3$ \quad et, pour tout entier naturel $n \geqslant 1,\:u_{n+1} = 0.9u_n + 1.3$.
+\end{center}
+
+\smallskip
+
+\begin{enumerate}
+\item 
+\enonce{ %début énoncé 
+
+Calculer $u_2$ et $u_3$ et proposer une interprétation dans le contexte de l'exercice. 
+} % fin énoncé 
+
+\correction{ %début correction 
+
+$u_2 = 0.9\times u_1 + 1.3 = 0.9\times 3 +  1.3= 4$ et 
+$u_3 =0.9\times u_2 + 1.3= 0.9\times  4 +  1.3= 4.9 $
+% et proposer une interprétation dans le contexte de l'exercice.2. 
+On peut estimer à $400$ le nombre de questions le 2ème mois, et à $490$ le 3ème mois.
+} % fin correction 
+
+
+\item 
+\enonce{ %début énoncé 
+
+Montrer par récurrence que pour tout entier naturel $n \geqslant 1$ :
+\[u_n = 13 - \dfrac{100}{9} \times 0.9^n.\]
+} % fin énoncé 
+
+\correction{ %début correction 
+
+On va montrer par récurrence la propriété  $u_n = 13 - \dfrac{100}{9} \times 0.9^n$ pour tout $n\geqslant1$.
+
+\begin{list}{\textbullet}{}
+\item \textbf{Initialisation}
+
+Pour $n=1$, on a $u_1= 3$ et $13 -\dfrac{100}{9}\times 0.9^1=3$.
+
+La propriété est vérifiée au rang 1.
+\item \textbf{Hérédité}
+
+On suppose la propriété vraie au rang $n$ avec $n\geqslant 1$; autrement dit 
+$$u_n = 13 - \dfrac{100}{9} \times 0.9^n\mbox{ ;}$$
+c'est l'hypothèse de récurrence.
+
+\begin{eqnarray*}
+u_{n+1} &=& 0.9u_n+1.3 = 0.9 \left (13 - \dfrac{100}{9} \times 0.9^n\right ) +1.3 \\
+&=& 0.9\times 13 - \dfrac{100}{9}\times 0.9^{n+1}+1.3 \\
+&=&  13- \dfrac{100}{9}\times 0.9^{n+1}
+\end{eqnarray*}
+
+
+Donc la propriété est vraie au rang $n+1$.
+\item \textbf{Conclusion}
+
+La propriété est vraie au rang 1 et elle est héréditaire pour tout $n\geqslant 1$; d'après le principe de récurrence, elle est vraie pour tout $n\geqslant 1$.
+\end{list}
+
+Donc pour tout $n\geqslant 1$, on a: $u_n = 13 - \dfrac{100}{9} \times 0.9^n$.
+} % fin correction 
+
+\end{enumerate}
+
+\begin{minipage}{0.62\linewidth}
+\begin{enumerate}
+\item  
+\enonce{ %début énoncé 
+
+En déduire que la suite $\left(u_n\right)$ est croissante.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+Pour tout $n\geqslant 1$, on a:
+
+\begin{eqnarray*}
+u_{n+1}-u_n &=& \left (13-\dfrac{100}{9}\times 0.9^{n+1}\right ) - \left (13-\dfrac{100}{9}\times 0.9^{n}\right ) \\
+&= &13-\dfrac{100}{9}\times 0.9^{n+1} - 13+\dfrac{100}{9}\times 0.9^{n}\\
+\phantom{u_{n+1}-u_n} &=& \dfrac{100}{9}\times 0.9^{n}\left (1-0.9\right ) >0
+\end{eqnarray*}
+
+donc la suite $(u_n)_{n\in\N*}$ est croissante.
+
+} % fin correction 
+
+\item 
+\enonce{ %début énoncé 
+
+On considère le programme ci-contre, écrit en langage Python.
+
+Déterminer la valeur renvoyée par la saisie de seuil($8.5$) et l'interpréter dans le contexte de l'exercice.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+On considère le programme ci-contre, écrit en langage Python.
+
+\begin{minipage}{0.72\linewidth}
+
+%Déterminer la valeur renvoyée par la saisie de seuil(8.5) et l'interpréter dans le contexte de l'exercice.
+
+Ce programme renvoie la plus petite valeur $n$ telle que $u_n>\texttt{p}$; donc \texttt{seuil($8.5$)} renvoie la plus petite valeur $n$ telle que $u_n>8.5$. On résout cette inéquation.
+
+\begin{eqnarray*}
+u_n&>&8.5 \\
+& \iff &13 -\dfrac{100}{9}\times 0.9^n > 8.5\\
+& \iff & 4.5 > \dfrac{100}{9}\times 0.9^n\\
+& \iff &\phantom{u_n>8.5}  \\
+& \iff & \dfrac{4.5\times 9}{100}> 0.9^n \\
+& \iff &\ln(0.405) > \ln \left (0.9^n\right )\\
+& \iff &\phantom{u_n>8.5} \\
+& \iff &\ln(0.405) >n \times \ln  (0.9) \\
+& \iff &\dfrac{\ln(0.405)}{\ln(0.9)} <n
+\end{eqnarray*}
+
+\end{minipage}\hfill
+
+
+$\dfrac{\ln(0.405)}{\ln(0.9)} \approx 8.6$ donc la valeur renvoyée par \texttt{seuil($8.5$)} est $9$.
+} % fin correction 
+
+\end{enumerate}
+\end{minipage}\hfill
+\begin{minipage}{0.32\linewidth}
+\renewcommand\arraystretch{0.9}
+
+\begin{tabular}{|l|} \hline
+def seuil(p) :\\
+\qquad n=1\\
+\qquad u=$3$\\
+\qquad while u<=p :\\
+\qquad  \qquad n=n+1\\
+\qquad \qquad u=$0.9$*u+$1.3$ \\
+\qquad return n\\ \hline
+\end{tabular}
+\end{minipage}
+
+\bigskip
+
+\textbf{Partie B : Une autre modélisation}
+
+\medskip
+
+Dans cette partie, on considère une seconde modélisation à l'aide d'une nouvelle
+suite $\left(v_n\right)$ définie pour tout entier naturel $n \geqslant 1$ par:
+\[v_n = 9 - 6 \times \text{e}^{-0.19\times(n - 1)}.\]
+
+Le terme $v_n$ est une estimation du nombre de questions, en centaines, présentes le $n$-ième mois sur la FAQ.
+
+\medskip
+
+\begin{enumerate}
+\item 
+\enonce{ %début énoncé 
+
+Préciser les valeurs arrondies au centième de $v_1$ et $v_2$.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+$v_1=9-6 \e^{0}=3$ et $v_2=9-6\e^{-0.19}\approx 4.04$
+} % fin correction 
+
+\item 
+\enonce{ %début énoncé 
+
+Déterminer, en justifiant la réponse, la plus petite valeur de $n$ telle que $v_n > 8.5$.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+On résout l'inéquation $v_n > 8.5$.
+
+\begin{eqnarray*}
+v_n &>& 8.5 \\
+\iff && 9 - 6 \times \e^{-0.19\times(n - 1)} > 8.5 \\
+\iff &&0.5 >  6 \times \e^{-0.19\times(n - 1)} \\
+\iff&&\dfrac{0.5}{6} > \e^{-0.19\times(n - 1)} \\
+&&\mbox{ et par croissance de la fonction logarithme népérien } \\
+\iff&& \ln \left (\dfrac{0.5}{6}\right ) > -0.19\times (n-1) \\
+\iff&&-\dfrac{\ln \left (\frac{0.5}{6}\right )}{0.19} < n - 1 \\
+n &>& 1 -\dfrac{\ln \left (\frac{0.5}{6}\right )}{0.19}
+\end{eqnarray*}
+
+
+
+Or $-\dfrac{\ln \left (\frac{0.5}{6}\right )}{0.19}\approx -13.08$ et $1 -( -13.08) = 14.08$ donc la plus petite valeur telle que $v_n > 8.5$ est $n = 15$.
+} % fin correction 
+
+\end{enumerate}
+
+\bigskip
+
+\textbf{Partie C : Comparaison des deux modèles}
+
+\medskip
+
+\begin{enumerate}
+\item 
+\enonce{ %début énoncé 
+
+L'entreprise considère qu'elle doit modifier la présentation de son site lorsque plus de $850$ questions sont présentes sur la FAQ. 
+
+Parmi ces deux modélisations, laquelle conduit à procéder le plus tôt à cette modification ?
+
+Justifier votre réponse.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+\begin{list}{\textbullet}{}
+\item Selon le 1er modèle, il y a plus de $850$ questions sur la FAQ quand $u_n>8.5$, c'est-à-dire le $9$ème mois.
+\item Selon le 2ème modèle, il y a plus de $850$ questions sur la FAQ quand $v_n>8.5$, c'est-à-dire le $ 15$ème mois.
+\end{list}
+
+C'est la $1ere$ modélisation qui conduit à procéder le plus tôt à cette modification.
+
+} % fin correction 
+
+\item 
+\enonce{ %début énoncé 
+
+En justifiant la réponse, pour quelle modélisation y a-t-il le plus grand nombre de questions sur la FAQ à long terme?
+} % fin énoncé 
+
+\correction{ %début correction 
+
+
+\begin{list}{\textbullet}{}
+\item $u_n=13 - \dfrac{100}{9}\times 0.9^n$
+
+$-1<0.9 <1$ donc $\lim_{n\to +\infty} 0.9^n=0$ donc $\lim_{n\to +\infty} u_n=13$.
+
+À long terme il y aura $1300$ questions pour la 1er modélisation..
+\item $v_n = 9 - 6 \times \e^{-0.19\times(n - 1)}$
+
+$\lim_{n\to +\infty} -0.19\times (n-1) = -\infty$ et $\lim_{X\to -\infty} \e^{X}=0$ donc $\lim_{n\to +\infty} \e^{-0.19\times(n - 1)}=0$; on en déduit que $\lim_{n\to +\infty} v_n=9$.
+
+À long terme il y aura $900$ questions pour la 2ème modélisation..
+\end{list}
+
+C'est donc pour la $1ere$ modélisation qu'il y aura le plus de questions à long terme.
+} % fin correction 
+
+\end{enumerate}
+
+\bigskip
+
+
+
+\section{Exercice\_003}
+
+\index[notions]{3eme}
+\index[notions]{aire triangle}
+\index[notions]{calcul angle}
+\index[notions]{droites parallèles}
+\index[notions]{triangle rectangle}
+\index[notions]{réciproque de Pythagore}
+\index[notions]{Thalès}
+\index[notions]{fonctions trigonométriques}
+\begin{description}
+\item[Date de création : ]20/03/2024
+\item[Source : ]annales apmep, Brevet Amérique du Nord 31 mai 2023
+\item[Liste des notions : ]3eme : aire triangle : calcul angle : droites parallèles : triangle rectangle : réciproque de Pythagore : Thalès : fonctions trigonométriques : 
+\item[Nombre de variantes de l'exercice : ]55
+\end{description}
+
+\centerline{\bf\large Barème utilisé pour l'exercice : 10 points / paramètre utilisé : numéro 0}
+
+
+
+\EXERCICE 
+\SeulementModeEnonce{ \points{10.0}} 
+
+\medskip
+\begin{minipage}{0.48\linewidth}
+On considère la figure ci-contre. On donne les mesures suivantes:
+
+\begin{itemize}
+\item[$\bullet~$] AN = $ 13$ cm
+\item[$\bullet~$] LN = $5$ cm
+\item[$\bullet~$] AL = $12$ cm
+\item[$\bullet~$] ON = $3$  cm
+\item[$\bullet~$] O appartient au segment [LN]
+\item[$\bullet~$] H appartient au segment [NA]
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.14,-1.62) rectangle (9.44,10.7);
+\draw [line width=2.pt] (6.,0.)-- (0.,9.);
+\draw [line width=2.pt] (0.,9.)-- (0.,0.);
+\draw [line width=2.pt] (0.,0.)-- (6.,0.);
+\draw [line width=2.pt] (3.36,0.)-- (3.36,3.96);
+\draw [line width=2.pt] (3.36,0.)-- (3.36,0.36);
+\draw [line width=2.pt] (3.36,0.36)-- (3.92,0.34);
+\draw [line width=2.pt] (3.92,0.34)-- (3.92,0.);
+\begin{scriptsize}
+\draw [fill=uuuuuu] (0.,0.) circle (2.0pt);
+\draw[color=uuuuuu] (-0.04,-0.35) node {$L$};
+\draw [fill=black] (6.,0.) circle (2.5pt);
+\draw[color=black] (6.14,0.37) node {$N$};
+\draw [fill=black] (0.,9.) circle (2.5pt);
+\draw[color=black] (0.14,9.37) node {$A$};
+\draw [fill=black] (3.36,0.) circle (2.5pt);
+\draw[color=black] (3.32,-0.31) node {$O$};
+\draw [fill=uuuuuu] (3.36,3.96) circle (2.0pt);
+\draw[color=uuuuuu] (3.5,4.29) node {$H$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{minipage}
+
+
+\begin{enumerate}
+% Question 1 : 
+\item 
+\enonce{ %début énoncé 
+
+Montrer que le triangle LNA est rectangle en L.
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+$ AN^{2} = 13^{2} =  169$ .
+
+$LN^{2} + AL^{2} = 5^{2} + 12^{2} =25 + 144= 169$
+
+donc $AN^{2} = LN^{2} + AL^{2}$.
+
+D'après la réciproque du théorème de Pythagore, le triangle $LNA$ est bien rectangle en $L$. 
+\points{2.0} %en pourcentage
+} % fin correction 
+
+% Question 2 : 
+\item 
+\enonce{ %début énoncé 
+
+Montrer que la longueur OH est égale à $7.25$~cm.
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+D'après la question précédente, $(AL) \perp (LN)$.
+
+D'après le codage de l'énoncé, $(HO) \perp (LN)$.
+
+Donc les droites $(AL)$ et $(HO)$ perpendiculaires à une même droite,
+sont parallèles. D'autre part
+
+Les points $N,H,A $ et $N, O, L $ sont alignés.
+
+Les droites $(AL)$ et $(HO)$ sont parallèles.
+
+D'après le théorème de Thalès
+
+\(\displaystyle	\dfrac{NO}{NL}=\dfrac{NH}{NA}=\dfrac{OH}{AL}\) ~~ soit ~~ \(\displaystyle	\dfrac{3}{5}= \dfrac{NH}{13}=\dfrac{OH}{12}\),  d'où ~~\(\displaystyle OH = \dfrac{12 \times 3}{5}  = 7.25~(\text{cm}) \).
+\points{2.0} %en pourcentage
+} % fin correction 
+
+
+% Question 3 : 
+\item 
+\enonce{ %début énoncé 
+
+Calculer la mesure de l'angle $\widehat{\text{LNA}}$. Donner une valeur approchée à l'unité près. 
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+Dans le triangle $ LNA $ rectangle en $ L $, 
+\(\displaystyle \cos({\widehat{LNA}})=\dfrac{\text{côté adjacent}}{\text{hypoténuse}}=\dfrac{LN}{AN}= \dfrac{5}{13}\).
+
+La calculatrice donne avec la fonction inverse de la fonction cosinus : $\widehat{LNA} \approx 67^\circ$.
+\points{2.0} %en pourcentage
+} % fin correction 
+
+% Question 4 : 
+\item 
+\enonce{ %début énoncé 
+
+Pourquoi les triangles LNA et ONH sont-ils semblables ?
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+L'angle $\widehat{LNA}$ est un angle commun aux deux triangles.
+	
+$\widehat{HON}=\widehat{ALN}=90 ~ \text{degrés}$.
+
+Donc les triangles $ LNA $ et $ OHN $ ont deux paires d'angles de même mesures, donc ils sont semblables.
+\points{1.0} %en pourcentage
+} % fin correction 
+
+\item 
+\begin{enumerate}
+% Question 5 a. : 
+\item 
+\enonce{ %début énoncé 
+
+Quelle est l'aire du quadrilatère LOHA ?
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+ On calcule les différentes aires :
+
+\(\displaystyle A_{LNA}=\dfrac{5\times 12}{2}=30~(\text{cm}^{2})\).
+
+\(\displaystyle A_{OHN}=\dfrac{3\times  7.25}{2}=10.8~~(\text{cm}^{2})\).
+
+\(\displaystyle A_{LOHA}=A_{LNA} - A_{OHN}=19.2~~(\text{cm}^{2})\).
+\points{2.0} %en pourcentage
+} % fin correction 
+
+\item 
+% Question 5 b. : 
+\enonce{ %début énoncé 
+
+Quelle proportion de l'aire du triangle LNA représente l'aire du quadrilatère LOHA ?
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+\(\displaystyle \dfrac{A_{LOHA}}{A_{LAN}}=\dfrac{19.2}{30}=0.64=\dfrac{64}{100}\).
+
+La proportion est donc \(\displaystyle \dfrac{64}{100}\).
+\points{1.0} %en pourcentage
+} % fin correction 
+
+\end{enumerate}
+\end{enumerate}
+
+
+

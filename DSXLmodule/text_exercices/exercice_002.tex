@@ -1,0 +1,278 @@
+\EXERCICE \SeulementModeEnonce{\poids{100}}
+
+\medskip
+
+Une entreprise a créé une Foire Aux Questions ("FAQ") sur son site internet.
+
+\medskip
+
+On étudie le nombre de questions qui y sont posées chaque mois.
+
+\bigskip
+
+\textbf{Partie A : Première modélisation}
+
+\medskip
+
+Dans cette partie, on admet que, chaque mois :
+
+\begin{itemize}
+\item[$\bullet~~$]$\var{pourc}{90}$\,\% des questions déjà posées le mois précédent sont conservées sur la FAQ ;
+\item[$\bullet~~$]$\var{nouvques}{130}$ nouvelles questions sont ajoutées à la FAQ.
+\end{itemize}
+
+Au cours du premier mois, $\var{Nquesun}{300}$ questions ont été posées.
+
+\medskip
+
+Pour estimer le nombre de questions, en centaines, présentes sur la FAQ le $n$-ième
+mois, on modélise la situation ci-dessus à l'aide de la suite $\left(u_n\right)$ définie par : 
+\begin{center}$u_1 =\var{u1}{3}$ \quad et, pour tout entier naturel $n \geqslant 1,\:u_{n+1} = \var{q}{0.9}u_n + \var{m}{1,3}$.
+\end{center}
+
+\smallskip
+
+\begin{enumerate}
+\item 
+\enonce{ %début énoncé 
+
+Calculer $u_2$ et $u_3$ et proposer une interprétation dans le contexte de l'exercice. 
+} % fin énoncé 
+
+\correction{ %début correction 
+
+$u_2 = \var{q}{0.9}\times u_1 + \var{m}{1,3} = \var{q}{0.9}\times \var{u1}{3} +  \var{m}{1,3}= \var{u2}{4}$ et 
+$u_3 =\var{q}{0.9}\times u_2 + \var{m}{1,3}= \var{q}{0.9}\times  \var{u2}{4} +  \var{m}{1,3}= \var{u3}{4.9} $
+% et proposer une interprétation dans le contexte de l'exercice.2. 
+On peut estimer à $\var{u2cent}{400}$ le nombre de questions le 2ème mois, et à $\var{u3cent}{490}$ le 3ème mois.
+} % fin correction 
+
+
+\item 
+\enonce{ %début énoncé 
+
+Montrer par récurrence que pour tout entier naturel $n \geqslant 1$ :
+\[u_n = \var{uinf}{13} - \var{Au}{\dfrac{100}{9}} \times \var{q}{0.9}^n.\]
+} % fin énoncé 
+
+\correction{ %début correction 
+
+On va montrer par récurrence la propriété  $u_n = \var{uinf}{13} - \var{Au}{\dfrac{100}{9}} \times \var{q}{0.9}^n$ pour tout $n\geqslant1$.
+
+\begin{list}{\textbullet}{}
+\item \textbf{Initialisation}
+
+Pour $n=1$, on a $u_1= \var{u1}{3}$ et $\var{uinf}{13} -\var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^1=\var{u1}{3}$.
+
+La propriété est vérifiée au rang 1.
+\item \textbf{Hérédité}
+
+On suppose la propriété vraie au rang $n$ avec $n\geqslant 1$; autrement dit 
+$$u_n = \var{uinf}{13} - \var{Au}{\dfrac{100}{9}} \times \var{q}{0.9}^n\mbox{ ;}$$
+c'est l'hypothèse de récurrence.
+
+\begin{eqnarray*}
+u_{n+1} &=& \var{q}{0.9}u_n+\var{m}{1,3} = \var{q}{0.9} \left (\var{uinf}{13} - \var{Au}{\dfrac{100}{9}} \times \var{q}{0.9}^n\right ) +\var{m}{1,3} \\
+&=& \var{q}{0.9}\times \var{uinf}{13} - \var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n+1}+\var{m}{1,3} \\
+&=&  \var{uinf}{13}- \var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n+1}
+\end{eqnarray*}
+
+
+Donc la propriété est vraie au rang $n+1$.
+\item \textbf{Conclusion}
+
+La propriété est vraie au rang 1 et elle est héréditaire pour tout $n\geqslant 1$; d'après le principe de récurrence, elle est vraie pour tout $n\geqslant 1$.
+\end{list}
+
+Donc pour tout $n\geqslant 1$, on a: $u_n = \var{uinf}{13} - \var{Au}{\dfrac{100}{9}} \times \var{q}{0.9}^n$.
+} % fin correction 
+
+\end{enumerate}
+
+\begin{minipage}{0.62\linewidth}
+\begin{enumerate}
+\item  
+\enonce{ %début énoncé 
+
+En déduire que la suite $\left(u_n\right)$ est croissante.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+Pour tout $n\geqslant 1$, on a:
+
+\begin{eqnarray*}
+u_{n+1}-u_n &=& \left (\var{uinf}{13}-\var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n+1}\right ) - \left (\var{uinf}{13}-\var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n}\right ) \\
+&= &\var{uinf}{13}-\var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n+1} - \var{uinf}{13}+\var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n}\\
+\phantom{u_{n+1}-u_n} &=& \var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^{n}\left (1-\var{q}{0.9}\right ) >0
+\end{eqnarray*}
+
+donc la suite $(u_n)_{n\in\N*}$ est croissante.
+
+} % fin correction 
+
+\item 
+\enonce{ %début énoncé 
+
+On considère le programme ci-contre, écrit en langage Python.
+
+Déterminer la valeur renvoyée par la saisie de seuil($\var{useuil}{8.5}$) et l'interpréter dans le contexte de l'exercice.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+On considère le programme ci-contre, écrit en langage Python.
+
+\begin{minipage}{0.72\linewidth}
+
+%Déterminer la valeur renvoyée par la saisie de seuil(8.5) et l'interpréter dans le contexte de l'exercice.
+
+Ce programme renvoie la plus petite valeur $n$ telle que $u_n>\texttt{p}$; donc \texttt{seuil($\var{useuil}{8.5}$)} renvoie la plus petite valeur $n$ telle que $u_n>\var{useuil}{8.5}$. On résout cette inéquation.
+
+\begin{eqnarray*}
+u_n&>&\var{useuil}{8.5} \\
+& \iff &\var{uinf}{13} -\var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^n > \var{useuil}{8.5}\\
+& \iff & \var{uDelta}{4.5} > \var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^n\\
+& \iff &\phantom{u_n>\var{useuil}{8.5}}  \\
+& \iff & \dfrac{\var{uDelta}{4.5}\times \var{AuDenom}{9}}{\var{AuNum}{100}}> \var{q}{0.9}^n \\
+& \iff &\ln(\var{tmp1}{0,405}) > \ln \left (\var{q}{0.9}^n\right )\\
+& \iff &\phantom{u_n>\var{useuil}{8.5}} \\
+& \iff &\ln(\var{tmp1}{0,405}) >n \times \ln  (\var{q}{0.9}) \\
+& \iff &\dfrac{\ln(\var{tmp1}{0,405})}{\ln(\var{q}{0.9})} <n
+\end{eqnarray*}
+
+\end{minipage}\hfill
+
+
+$\dfrac{\ln(\var{tmp1}{0,405})}{\ln(\var{q}{0.9})} \approx \var{seuilDec}{8.6}$ donc la valeur renvoyée par \texttt{seuil($\var{useuil}{8.5}$)} est $\var{seuilAlg}{9}$.
+} % fin correction 
+
+\end{enumerate}
+\end{minipage}\hfill
+\begin{minipage}{0.32\linewidth}
+\renewcommand\arraystretch{0.9}
+
+\begin{tabular}{|l|} \hline
+def seuil(p) :\\
+\qquad n=1\\
+\qquad u=$\var{u1}{3}$\\
+\qquad while u<=p :\\
+\qquad  \qquad n=n+1\\
+\qquad \qquad u=$\var{q}{0.9}$*u+$\var{m}{1,3}$ \\
+\qquad return n\\ \hline
+\end{tabular}
+\end{minipage}
+
+\bigskip
+
+\textbf{Partie B : Une autre modélisation}
+
+\medskip
+
+Dans cette partie, on considère une seconde modélisation à l'aide d'une nouvelle
+suite $\left(v_n\right)$ définie pour tout entier naturel $n \geqslant 1$ par:
+\[v_n = \var{vinf}{9} - \var{Av}{6} \times \text{e}^{\var{Lv}{-0,19}\times(n - 1)}.\]
+
+Le terme $v_n$ est une estimation du nombre de questions, en centaines, présentes le $n$-ième mois sur la FAQ.
+
+\medskip
+
+\begin{enumerate}
+\item 
+\enonce{ %début énoncé 
+
+Préciser les valeurs arrondies au centième de $v_1$ et $v_2$.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+$v_1=\var{vinf}{9}-\var{Av}{6} \e^{0}=\var{v1}{3}$ et $v_2=\var{vinf}{9}-\var{Av}{6}\e^{\var{Lv}{-0,19}}\approx \var{v2}{4,04}$
+} % fin correction 
+
+\item 
+\enonce{ %début énoncé 
+
+Déterminer, en justifiant la réponse, la plus petite valeur de $n$ telle que $v_n > \var{useuil}{8.5}$.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+On résout l'inéquation $v_n > \var{useuil}{8.5}$.
+
+\begin{eqnarray*}
+v_n &>& \var{useuil}{8.5} \\
+\iff && \var{vinf}{9} - \var{Av}{6} \times \e^{\var{Lv}{-0,19}\times(n - 1)} > \var{useuil}{8.5} \\
+\iff &&\var{tmp2}{0,5} >  \var{Av}{6} \times \e^{\var{Lv}{-0,19}\times(n - 1)} \\
+\iff&&\dfrac{\var{tmp2}{0,5}}{\var{Av}{6}} > \e^{\var{Lv}{-0,19}\times(n - 1)} \\
+&&\mbox{ et par croissance de la fonction logarithme népérien } \\
+\iff&& \ln \left (\dfrac{\var{tmp2}{0,5}}{\var{Av}{6}}\right ) > \var{Lv}{-0,19}\times (n-1) \\
+\iff&&-\dfrac{\ln \left (\frac{\var{tmp2}{0,5}}{\var{Av}{6}}\right )}{\var{pLv}{0,19}} < n - 1 \\
+n &>& 1 -\dfrac{\ln \left (\frac{\var{tmp2}{0,5}}{\var{Av}{6}}\right )}{\var{pLv}{0,19}}
+\end{eqnarray*}
+
+
+
+Or $-\dfrac{\ln \left (\frac{\var{tmp2}{0,5}}{\var{Av}{6}}\right )}{\var{pLv}{0,19}}\approx \var{tmp3}{-13,08}$ et $1 -( \var{tmp3}{-13,08}) = \var{nvapprox}{14,08}$ donc la plus petite valeur telle que $v_n > \var{useuil}{8.5}$ est $n = \var{nv}{15}$.
+} % fin correction 
+
+\end{enumerate}
+
+\bigskip
+
+\textbf{Partie C : Comparaison des deux modèles}
+
+\medskip
+
+\begin{enumerate}
+\item 
+\enonce{ %début énoncé 
+
+L'entreprise considère qu'elle doit modifier la présentation de son site lorsque plus de $\var{useuilcent}{850}$ questions sont présentes sur la FAQ. 
+
+Parmi ces deux modélisations, laquelle conduit à procéder le plus tôt à cette modification ?
+
+Justifier votre réponse.
+} % fin énoncé 
+
+\correction{ %début correction 
+
+\begin{list}{\textbullet}{}
+\item Selon le 1er modèle, il y a plus de $\var{useuilcent}{850}$ questions sur la FAQ quand $u_n>\var{useuil}{8.5}$, c'est-à-dire le $\var{seuilAlg}{9}$ème mois.
+\item Selon le 2ème modèle, il y a plus de $\var{useuilcent}{850}$ questions sur la FAQ quand $v_n>\var{useuil}{8.5}$, c'est-à-dire le $ \var{nv}{15}$ème mois.
+\end{list}
+
+C'est la $\var{choixmod}{1ere}$ modélisation qui conduit à procéder le plus tôt à cette modification.
+
+} % fin correction 
+
+\item 
+\enonce{ %début énoncé 
+
+En justifiant la réponse, pour quelle modélisation y a-t-il le plus grand nombre de questions sur la FAQ à long terme?
+} % fin énoncé 
+
+\correction{ %début correction 
+
+
+\begin{list}{\textbullet}{}
+\item $u_n=\var{uinf}{13} - \var{Au}{\dfrac{100}{9}}\times \var{q}{0.9}^n$
+
+$-1<\var{q}{0.9} <1$ donc $\lim_{n\to +\infty} \var{q}{0.9}^n=0$ donc $\lim_{n\to +\infty} u_n=\var{uinf}{13}$.
+
+À long terme il y aura $\var{uinfcent}{1300}$ questions pour la 1er modélisation..
+\item $v_n = \var{vinf}{9} - \var{Av}{6} \times \e^{\var{Lv}{-0,19}\times(n - 1)}$
+
+$\lim_{n\to +\infty} \var{Lv}{-0,19}\times (n-1) = -\infty$ et $\lim_{X\to -\infty} \e^{X}=0$ donc $\lim_{n\to +\infty} \e^{\var{Lv}{-0,19}\times(n - 1)}=0$; on en déduit que $\lim_{n\to +\infty} v_n=\var{vinf}{9}$.
+
+À long terme il y aura $\var{vinfcent}{900}$ questions pour la 2ème modélisation..
+\end{list}
+
+C'est donc pour la $\var{choixmod2}{1ere}$ modélisation qu'il y aura le plus de questions à long terme.
+} % fin correction 
+
+\end{enumerate}
+
+\bigskip
+
+
+

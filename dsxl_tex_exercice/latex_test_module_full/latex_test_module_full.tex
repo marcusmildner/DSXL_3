@@ -1,0 +1,7541 @@
+%DEBUT EnTete
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{pgf,tikz}
+\usepackage{pstricks-add}
+\usetikzlibrary{arrows}
+\usepackage{mathrsfs}
+\usepackage{ifthen}
+\usepackage{pdfpages}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{datatool}
+\everymath{\displaystyle}
+\usepackage{fancyhdr} 
+\usepackage{hyperref}
+\usepackage{sagetex}
+%FIN EnTete
+%DEBUT MesCommandes
+
+\setlength{\parindent}{0em}
+
+
+
+% *********************************************************************
+% MODIFIER LA LIGNE SELON LE MODE VOULU : **********************
+\newcommand{\EnonceCorrection}{C}	% E = mode énoncé   C = mode correction 
+% **********************************************************************
+
+
+
+%%%%%%%%%%%%% MetaDonnees.tex %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AfficheMetaAuteur}{
+% Pour imprimer les métadonnées (à effacer) : 
+{\bf Auteur : \AuteurEx    \hfill Nom de l'exercice : \varnom  \hfill  Version :   \VersionEx }
+
+{\bf Date de création : \DateCreationEx \hfill Date de modification : \DateModificationEx }
+
+{\bf Source de l'exercice : \SourceEx }
+
+{\bf Description : \DescriptionEx}
+
+\hrulefill
+
+}
+%%%%%%%%%%%%% TitreDuTexte %%%%%%%%%%%%%%%%%%%%%
+% #1 :  niveau                   #2 : Titre
+\newcommand{\TitreDuTexte}{
+{\bf \varnom \large   \hfill \NiveauEx Mathématiques \hfill   $ e^{i\pi}+1=0$ }
+
+\bigskip
+\centerline{\bf \large \NomEx}
+\bigskip
+}
+
+%%%%% Quelques commandes personnalisées %%%%%%%%%%%%%%%%%%
+\newcommand{\euro}{\eurologo{}} 
+\newcommand{\e}{\mbox{e}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+\renewcommand{\mathbf}{}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+
+%============================================================
+% POUR L'ENONCE : Le paramètre est l'énoncé \enonce{Ceci est l'énoncé}
+\newcommand{\enonce}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{#1}{ {\bf \it #1}}{} }
+
+% POUR LA CORRECTION : Le paramètre est la solution \correction{Ceci est la correction}
+\newcommand{\correction}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ \ \ \newline 
+ {\bf SOLUTION : } #1}{}
+}
+
+% VARIABLE points par exercices 
+\newcounter{pointsexercice}
+% Cette variable se remets à 0 à chaque début d'exercice par la commande : \setcounter{pointexercice}{0}
+
+% VARIABLE qui contient le total des points 
+\newcounter{pointssujetTOTAL}
+\setcounter{pointssujetTOTAL}{0}
+
+% VARIABLE qui contient le numéro de l'exercice : 
+\newcounter{numeroexercice}
+
+\newcommand{\Affichepointsexercice}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ \ \ \hfill {\bf  Cet exercice comporte  $\thepointsexercice$  points }}{}
+
+}
+
+\newcommand{\AffichepointssujetTOTAL}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ \ \ \newline  {\bf Le sujet compte un total de \thepointssujetTOTAL \ points.} }{}
+}
+
+\newcommand{\points}[1]{ {\bf [#1 point(s)]}}
+
+\newcommand{\poids}[1]{ {\bf [poids = #1 \%]}}
+
+\newcommand{\EXERCICE}{
+% On ajoute 1 au numéro de l'exercice :
+\setcounter{numeroexercice}{\thenumeroexercice + 1}
+% On remet à zéro les points de l'exercice 
+\setcounter{pointsexercice}{0}
+
+\bigskip
+{\bf EXERCICE \thenumeroexercice \ (Tous les résultats doivent être justifiés)} 
+
+}
+
+% Cette commande insère une nouvelle page en mode ENONCE 
+\newcommand{\NouvellePageModeEnonce}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{ \newpage }{} }
+
+% Cette commande insère une nouvelle page en mode CORRECTION 
+\newcommand{\NouvellePageModeCorrection}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ \newpage }{} }
+
+
+% Cette commande seulement mode ENONCE 
+\newcommand{\SeulementModeEnonce}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{ #1 }{} }
+
+% Cette commande seulement en mode CORRECTION 
+\newcommand{\SeulementModeCorrection}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ #1 }{} }
+
+% Commande balise pour définir une variable : \var{p}{10} affichera juste 10, mais 
+% le programme reconnaitra la variable p 
+\newcommand{\var}[2]{\fbox{#2}_{\fbox{\mbox{\bf #1}}}}
+
+
+%FIN MesCommandes
+%DEBUT MetaAuteur
+\newcommand{\AuteurEx}{} 
+\newcommand{\VersionEx}{} 
+\newcommand{\DateCreationEx}{} 
+\newcommand{\DateModificationEx}{} 
+\newcommand{\SourceEx}{} 
+\newcommand{\NotionsEx}{} 
+\newcommand{\NiveauEx}{} 
+\newcommand{\NomEx}{}
+%FIN MetaAuteur
+
+\begin{document}
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 3 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+3^2 + 3^2 &=& AC^2 \\
+18 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{18} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 3^2 &=& AC^2 \\
+25 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{25} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 4 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+4^2 + 4^2 &=& AC^2 \\
+32 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{32} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 3
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 3^2 &=& AC^2 \\
+34 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{34} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 4
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 4^2 &=& AC^2 \\
+41 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{41} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(-1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(0+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+-0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.0*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.2*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\EXERCICE
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = 5 et BC = 5
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC \points{2.0} %en pourcentage
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ Le triangle ABC est rectangle en B,, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+5^2 + 5^2 &=& AC^2 \\
+50 &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{50} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+Calculer l'angle $\widehat{ABC}$ au degré près. } % fin énoncé 
+\points{2.0} %en pourcentage
+\end{description}
+
+\psset{xunit=1.0cm,yunit=1.0cm,algebraic=true,dimen=middle,dotstyle=o,dotsize=5pt 0,linewidth=2.pt,arrowsize=3pt 2,arrowinset=0.25}
+\begin{pspicture*}(-4.3,-3.02)(7.28,6.3)
+\multips(0,-3)(0,1.0){10}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(-4.3,0)(7.28,0)}
+\multips(-4,0)(1.0,0){12}{\psline[linestyle=dashed,linecap=1,dash=1.5pt 1.5pt,linewidth=0.4pt,linecolor=lightgray]{c-c}(0,-3.02)(0,6.3)}
+\psaxes[labelFontSize=\scriptstyle,xAxis=true,yAxis=true,Dx=1.,Dy=1.,ticksize=-2pt 0,subticks=2]{->}(0,0)(-4.3,-3.02)(7.28,6.3)
+\psplot[linewidth=2.pt]{-4.3}{7.28}{(1+0.4*x)/1.}
+%\psplot[linewidth=2.pt]{-4.3}{7.28}{(-2.--1.5*x)/1.}
+\begin{scriptsize}
+\rput[bl](5.08,5.98){$f$}
+\end{scriptsize}
+\end{pspicture*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

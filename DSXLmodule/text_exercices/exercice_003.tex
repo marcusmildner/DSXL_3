@@ -1,0 +1,164 @@
+\EXERCICE 
+\SeulementModeEnonce{ \poids{100}} 
+
+\medskip
+\begin{minipage}{0.48\linewidth}
+On considère la figure ci-contre. On donne les mesures suivantes:
+
+\begin{itemize}
+\item[$\bullet~$] AN = $ \var{AN}{13}$ cm
+\item[$\bullet~$] LN = $\var{LN}{5}$ cm
+\item[$\bullet~$] AL = $\var{AL}{12}$ cm
+\item[$\bullet~$] ON = $\var{ON}{3}$  cm
+\item[$\bullet~$] O appartient au segment [LN]
+\item[$\bullet~$] H appartient au segment [NA]
+\end{itemize}
+\end{minipage}\hfill
+\begin{minipage}{0.48\linewidth}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-2.14,-1.62) rectangle (9.44,10.7);
+\draw [line width=2.pt] (6.,0.)-- (0.,9.);
+\draw [line width=2.pt] (0.,9.)-- (0.,0.);
+\draw [line width=2.pt] (0.,0.)-- (6.,0.);
+\draw [line width=2.pt] (3.36,0.)-- (3.36,3.96);
+\draw [line width=2.pt] (3.36,0.)-- (3.36,0.36);
+\draw [line width=2.pt] (3.36,0.36)-- (3.92,0.34);
+\draw [line width=2.pt] (3.92,0.34)-- (3.92,0.);
+\begin{scriptsize}
+\draw [fill=uuuuuu] (0.,0.) circle (2.0pt);
+\draw[color=uuuuuu] (-0.04,-0.35) node {$L$};
+\draw [fill=black] (6.,0.) circle (2.5pt);
+\draw[color=black] (6.14,0.37) node {$N$};
+\draw [fill=black] (0.,9.) circle (2.5pt);
+\draw[color=black] (0.14,9.37) node {$A$};
+\draw [fill=black] (3.36,0.) circle (2.5pt);
+\draw[color=black] (3.32,-0.31) node {$O$};
+\draw [fill=uuuuuu] (3.36,3.96) circle (2.0pt);
+\draw[color=uuuuuu] (3.5,4.29) node {$H$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{minipage}
+
+
+\begin{enumerate}
+% Question 1 : 
+\item 
+\enonce{ %début énoncé 
+
+Montrer que le triangle LNA est rectangle en L.
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+$ AN^{2} = \var{AN}{13}^{2} =  \var{ANcarre}{169}$ .
+
+$LN^{2} + AL^{2} = \var{LN}{5}^{2} + \var{AL}{12}^{2} =\var{LNcarre}{25} + \var{ALcarre}{12}= \var{ANcarre}{169}$
+
+donc $AN^{2} = LN^{2} + AL^{2}$.
+
+D'après la réciproque du théorème de Pythagore, le triangle $LNA$ est bien rectangle en $L$. 
+\poids{20} %en pourcentage
+} % fin correction 
+
+% Question 2 : 
+\item 
+\enonce{ %début énoncé 
+
+Montrer que la longueur OH est égale à $\var{OH}{7.25}$~cm.
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+D'après la question précédente, $(AL) \perp (LN)$.
+
+D'après le codage de l'énoncé, $(HO) \perp (LN)$.
+
+Donc les droites $(AL)$ et $(HO)$ perpendiculaires à une même droite,
+sont parallèles. D'autre part
+
+Les points $N,H,A $ et $N, O, L $ sont alignés.
+
+Les droites $(AL)$ et $(HO)$ sont parallèles.
+
+D'après le théorème de Thalès
+
+\(\displaystyle	\dfrac{NO}{NL}=\dfrac{NH}{NA}=\dfrac{OH}{AL}\) ~~ soit ~~ \(\displaystyle	\dfrac{\var{ON}{3}}{\var{LN}{5}}= \dfrac{NH}{\var{AN}{13}}=\dfrac{OH}{\var{AL}{12}}\),  d'où ~~\(\displaystyle OH = \dfrac{\var{AL}{12} \times \var{ON}{3}}{\var{LN}{5}}  = \var{OH}{7.25}~(\text{cm}) \).
+\poids{20} %en pourcentage
+} % fin correction 
+
+
+% Question 3 : 
+\item 
+\enonce{ %début énoncé 
+
+Calculer la mesure de l'angle $\widehat{\text{LNA}}$. Donner une valeur approchée à l'unité près. 
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+Dans le triangle $ LNA $ rectangle en $ L $, 
+\(\displaystyle \cos({\widehat{LNA}})=\dfrac{\text{côté adjacent}}{\text{hypoténuse}}=\dfrac{LN}{AN}= \dfrac{\var{LN}{5}}{\var{AN}{13}}\).
+
+La calculatrice donne avec la fonction inverse de la fonction cosinus : $\widehat{LNA} \approx \var{angleLNA}{67}^\circ$.
+\poids{20} %en pourcentage
+} % fin correction 
+
+% Question 4 : 
+\item 
+\enonce{ %début énoncé 
+
+Pourquoi les triangles LNA et ONH sont-ils semblables ?
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+L'angle $\widehat{LNA}$ est un angle commun aux deux triangles.
+	
+$\widehat{HON}=\widehat{ALN}=90 ~ \text{degrés}$.
+
+Donc les triangles $ LNA $ et $ OHN $ ont deux paires d'angles de même mesures, donc ils sont semblables.
+\poids{10} %en pourcentage
+} % fin correction 
+
+\item 
+\begin{enumerate}
+% Question 5 a. : 
+\item 
+\enonce{ %début énoncé 
+
+Quelle est l'aire du quadrilatère LOHA ?
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+ On calcule les différentes aires :
+
+\(\displaystyle A_{LNA}=\dfrac{\var{LN}{5}\times \var{AL}{12}}{2}=\var{aireLNA}{30}~(\text{cm}^{2})\).
+
+\(\displaystyle A_{OHN}=\dfrac{\var{ON}{3}\times  \var{OH}{7.25}}{2}=\var{aireOHN}{10.8}~~(\text{cm}^{2})\).
+
+\(\displaystyle A_{LOHA}=A_{LNA} - A_{OHN}=\var{aireLOHA}{19.2}~~(\text{cm}^{2})\).
+\poids{20} %en pourcentage
+} % fin correction 
+
+\item 
+% Question 5 b. : 
+\enonce{ %début énoncé 
+
+Quelle proportion de l'aire du triangle LNA représente l'aire du quadrilatère LOHA ?
+} % fin énoncé 
+
+\correction{ %début énoncé 
+
+\(\displaystyle \dfrac{A_{LOHA}}{A_{LAN}}=\dfrac{\var{aireLOHA}{19.2}}{\var{aireLNA}{30}}=\var{propAire}{0.64}=\dfrac{\var{NUMpropAire}{64}}{\var{DENpropAire}{100}}\).
+
+La proportion est donc \(\displaystyle \dfrac{\var{NUMpropAire}{64}}{\var{DENpropAire}{100}}\).
+\poids{10} %en pourcentage
+} % fin correction 
+
+\end{enumerate}
+\end{enumerate}
+
+
+

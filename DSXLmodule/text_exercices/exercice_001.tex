@@ -1,0 +1,93 @@
+\EXERCICE \SeulementModeEnonce{\poids{100}}
+\enonce{ %début énoncé 
+
+Soit ABC un triangle rectangle en B. On sait que AB = $\var{a}{3}$ et BC = $\var{b}{4}$
+
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\clip(-4.3,-3.02) rectangle (7.28,6.3);
+\draw [line width=2.pt] (4.,3.)-- (-2.,0.);
+\draw [line width=2.pt] (-2.,0.)-- (4.,0.);
+\draw [line width=2.pt] (4.,0.)-- (4.,3.);
+\draw [line width=2.pt,domain=-4.3:7.28] plot(\x,{(--24.-6.*\x)/3.});
+\begin{scriptsize}
+\draw [fill=black] (-2.,0.) circle (2.5pt);
+\draw[color=black] (-1.86,0.37) node {$A$};
+\draw [fill=black] (4.,0.) circle (2.5pt);
+\draw[color=black] (4.14,0.37) node {$B$};
+\draw [fill=black] (4.,3.) circle (2.5pt);
+\draw[color=black] (4.14,3.37) node {$C$};
+\draw[color=black] (1.3,6.15) node {(d)};
+\draw [fill=uuuuuu] (2.8,2.4) circle (2.0pt);
+\draw[color=uuuuuu] (2.22,2.67) node {$H$};
+\end{scriptsize}
+\end{tikzpicture}
+
+
+} % fin énoncé 
+
+\begin{description}
+\item[1.] \enonce{ %début énoncé 
+Calculer la longueur de AC 
+On donnera une valeur approchée au millième. 
+} % fin énoncé 
+
+\correction{ %début énoncé 
+\poids{40} %en pourcentage 
+ Le triangle ABC est rectangle en B, donc avec le théorème de Pythagore on a : 
+\begin{eqnarray*}
+AB^2 + BC^2 &=& AC^2 \\
+\var{a}{3}^2 + \var{b}{4}^2 &=& AC^2 \\
+\var{h2}{25} &=&AC^2 \\
+& & \mbox{ Donc : } AC = \sqrt{\var{h2}{25}}\approx \var{h}{5.000} 
+\end{eqnarray*}
+} % fin correction 
+
+\item[2.] \enonce{ %début énoncé 
+ Calculer l'aire $S$ du triangle ABC
+} % fin énoncé 
+
+\correction{ %début énoncé 
+\poids{20} %en pourcentage
+Comme le triangle ABC est rectangle en B on a :
+\begin{eqnarray*} 
+S &=& \frac{AB \times BC}{2} \\
+S &=& \frac{\var{a}{3}\times \var{b}{4}}{2} \\
+S &=& \var{w}{6} \mbox{ unité d'aire (u.a.)}
+\end{eqnarray*}
+} % fin correction 
+
+\item[3.] \enonce{ %début énoncé 
+ Soit H le pied de la hauteur du triangle ABC issu de B. Exprimer l'aire S en fonction de BH et AC. 
+} % fin énoncé 
+
+
+\correction{ %début énoncé 
+\poids{20} %en pourcentage
+ On a : $ S = \frac{BH \times AC}{2} $ 
+} % fin correction 
+
+\item[4.] \enonce{ %début énoncé 
+ Determiner HB (on donnera une valeur arrondie au centième).
+} % fin énoncé 
+
+\correction{ %début énoncé 
+ \poids{20} %en pourcentage
+ On a : 
+\begin{eqnarray*} 
+S &=& \frac{BH \times AC}{2} \\
+\var{w}{6}  &=& \frac{BH \times \var{h}{5.000}}{2} \\
+2\times \var{w}{6} &=& BH \times \var{h}{5.000} \\
+\frac{2\times \var{w}{6}}{\var{h}{5.000}} & =& BH \\
+&& \mbox{Donc : }BH \approx \var{BH}{2.40}
+\end{eqnarray*}
+} % fin correction 
+
+\end{description}
+
+
+\SeulementModeEnonce{}
+
+
+
+

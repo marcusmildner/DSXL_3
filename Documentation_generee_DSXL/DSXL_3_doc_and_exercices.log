@@ -1,0 +1,2265 @@
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020) (preloaded format=xelatex 2021.1.28)  19 MAR 2024 16:55
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**DSXL_3_doc_and_exercices.tex
+(./DSXL_3_doc_and_exercices.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-01-09> xparse <2020-03-03>
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count173
+\c@chapter=\count174
+\c@section=\count175
+\c@subsection=\count176
+\c@subsubsection=\count177
+\c@paragraph=\count178
+\c@subparagraph=\count179
+\c@figure=\count180
+\c@table=\count181
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2021/01/26 3.53 The Babel package
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2021/01/26 3.53 Babel common definitions
+\babel@savecnt=\count182
+\U@D=\dimen139
+\l@babelnohyphens=\language86
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/babel/xebabel.def
+(/usr/local/texlive/2020/texmf-dist/tex/generic/babel/txtbabel.def))
+\bbl@readstream=\read2
+)
+\bbl@dirlevel=\count183
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2020/10/10 v3.5l French support from the babel system
+Package babel Info: \l@acadian = using hyphenrules for french
+(babel)             (\language28) on input line 91.
+Package babel Info: \l@canadien = using hyphenrules for french
+(babel)             (\language28) on input line 92.
+\FB@nonchar=\count184
+Package french.ldf Info: No need for active punctuation characters
+(french.ldf)             with this version of XeTeX!
+(french.ldf)             reported on input line 332.
+\FB@punctthick=\XeTeXcharclass1
+\FB@punctthin=\XeTeXcharclass2
+\FB@punctnul=\XeTeXcharclass3
+\FB@guilo=\XeTeXcharclass4
+\FB@guilf=\XeTeXcharclass5
+\FB@guilnul=\XeTeXcharclass6
+\FBguill@level=\count185
+\FBold@everypar=\toks15
+\FB@Mht=\dimen140
+\mc@charclass=\count186
+\mc@charfam=\count187
+\mc@charslot=\count188
+\std@mcc=\count189
+\dec@mcc=\count190
+\listindentFB=\dimen141
+\descindentFB=\dimen142
+\labelindentFB=\dimen143
+\labelwidthFB=\dimen144
+\leftmarginFB=\dimen145
+\parindentFFN=\dimen146
+\FBfnindent=\dimen147
+))
+(/usr/local/texlive/2020/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/imakeidx/imakeidx.sty
+Package: imakeidx 2016/10/15 v1.3e Package for typesetting indices in a synchro
+nous mode
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks17
+\XKV@tempa@toks=\toks18
+)
+\XKV@depth=\count191
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
+\c@tracingmulticols=\count192
+\mult@box=\box47
+\multicol@leftmargin=\dimen148
+\c@unbalance=\count193
+\c@collectmore=\count194
+\doublecol@number=\count195
+\multicoltolerance=\count196
+\multicolpretolerance=\count197
+\full@width=\dimen149
+\page@free=\dimen150
+\premulticols=\dimen151
+\postmulticols=\dimen152
+\multicolsep=\skip49
+\multicolbaselineskip=\skip50
+\partial@page=\box48
+\last@line=\box49
+\maxbalancingoverflow=\dimen153
+\mult@rightbox=\box50
+\mult@grightbox=\box51
+\mult@gfirstbox=\box52
+\mult@firstbox=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\c@minrows=\count198
+\c@columnbadness=\count199
+\c@finalcolumnbadness=\count266
+\last@try=\dimen154
+\multicolovershoot=\dimen155
+\multicolundershoot=\dimen156
+\mult@nat@firstbox=\box91
+\colbreak@box=\box92
+\mc@col@check@num=\count267
+))
+\notions@idxfile=\write3
+\openout3 = `notions.idx'.
+
+
+Writing index file notions.idx
+\dsxlindex@idxfile=\write4
+\openout4 = `dsxlindex.idx'.
+
+Writing index file dsxlindex.idx
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip51
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen157
+))
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen158
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count268
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count269
+\leftroot@=\count270
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count271
+\DOTSCASE@=\count272
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box93
+\strutbox@=\box94
+\big@size=\dimen159
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count273
+\c@MaxMatrixCols=\count274
+\dotsspace@=\muskip16
+\c@parentequation=\count275
+\dspbrk@lvl=\count276
+\tag@help=\toks20
+\row@=\count277
+\column@=\count278
+\maxfields@=\count279
+\andhelp@=\toks21
+\eqnshift@=\dimen160
+\alignsep@=\dimen161
+\tagshift@=\dimen162
+\tagwidth@=\dimen163
+\totwidth@=\dimen164
+\lineht@=\dimen165
+\@envbody=\toks22
+\multlinegap=\skip52
+\multlinetaggap=\skip53
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 105.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-def/xetex.def
+File: xetex.def 2020/08/26 v5.0i Graphics/color driver for xetex
+))
+\Gin@req@height=\dimen166
+\Gin@req@width=\dimen167
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count280
+\calc@Bcount=\count281
+\calc@Adimen=\dimen168
+\calc@Bdimen=\dimen169
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count282
+\calc@Cskip=\skip56
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks24
+\pgfutil@tempdima=\dimen170
+\pgfutil@tempdimb=\dimen171
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box95
+) (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/12/27 v3.1.8b (3.1.8b)
+))
+Package: pgf 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks25
+\pgfkeys@temptoks=\toks26
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks27
+))
+\pgf@x=\dimen172
+\pgf@y=\dimen173
+\pgf@xa=\dimen174
+\pgf@ya=\dimen175
+\pgf@xb=\dimen176
+\pgf@yb=\dimen177
+\pgf@xc=\dimen178
+\pgf@yc=\dimen179
+\pgf@xd=\dimen180
+\pgf@yd=\dimen181
+\w@pgf@writea=\write5
+\r@pgf@reada=\read3
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks28
+\t@pgf@tokb=\toks29
+\t@pgf@tokc=\toks30
+\pgf@sys@id@count=\count287
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2020/12/27 v3.1.8b (3.1.8b)
+)
+Driver file for pgf: pgfsys-xetex.def
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.de
+f
+File: pgfsys-xetex.def 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx
+.def
+File: pgfsys-dvipdfmx.def 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2020/12/27 v3.1.8b (3.1.8b)
+)
+\pgfsys@objnum=\count288
+)))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
+File: pgfsyssoftpath.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfsyssoftpath@smallbuffer@items=\count289
+\pgfsyssoftpath@bigbuffer@items=\count290
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/local/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2020/12/27 v3.1.8b (3.1.8b)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen182
+\pgfmath@count=\count291
+\pgfmath@box=\box96
+\pgfmath@toks=\toks31
+\pgfmath@stack@operand=\toks32
+\pgfmath@stack@operation=\toks33
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count292
+)) (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@picminx=\dimen183
+\pgf@picmaxx=\dimen184
+\pgf@picminy=\dimen185
+\pgf@picmaxy=\dimen186
+\pgf@pathminx=\dimen187
+\pgf@pathmaxx=\dimen188
+\pgf@pathminy=\dimen189
+\pgf@pathmaxy=\dimen190
+\pgf@xx=\dimen191
+\pgf@xy=\dimen192
+\pgf@yx=\dimen193
+\pgf@yy=\dimen194
+\pgf@zx=\dimen195
+\pgf@zy=\dimen196
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@path@lastx=\dimen197
+\pgf@path@lasty=\dimen198
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@shorten@end@additional=\dimen199
+\pgf@shorten@start@additional=\dimen256
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfpic=\box97
+\pgf@hbox=\box98
+\pgf@layerbox@main=\box99
+\pgf@picture@serial@count=\count293
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgflinewidth=\dimen257
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@pt@x=\dimen258
+\pgf@pt@y=\dimen259
+\pgf@pt@temp=\dimen260
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfarrowsep=\dimen261
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@max=\dimen262
+\pgf@sys@shading@range@num=\count294
+\pgf@shadingcount=\count295
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfexternal@startupbox=\box100
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex
+File: pgfcorerdf.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfnodeparttextbox=\box101
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@nodesepstart=\dimen263
+\pgf@nodesepend=\dimen264
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2020/12/27 v3.1.8b (3.1.8b)
+))
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen265
+\pgffor@skip=\dimen266
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
+))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
+e.tex
+Package: tikz 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
+dlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@plot@mark@count=\count296
+\pgfplotmarksize=\dimen267
+)
+\tikz@lastx=\dimen268
+\tikz@lasty=\dimen269
+\tikz@lastxsaved=\dimen270
+\tikz@lastysaved=\dimen271
+\tikz@lastmovetox=\dimen272
+\tikz@lastmovetoy=\dimen273
+\tikzleveldistance=\dimen274
+\tikzsiblingdistance=\dimen275
+\tikz@figbox=\box102
+\tikz@figbox@bg=\box103
+\tikz@tempbox=\box104
+\tikz@tempbox@bg=\box105
+\tikztreelevel=\count297
+\tikznumberofchildren=\count298
+\tikznumberofcurrentchild=\count299
+\tikz@fig@count=\count300
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
+e.tex
+File: pgfmodulematrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfmatrixcurrentrow=\count301
+\pgfmatrixcurrentcolumn=\count302
+\pgf@matrix@numberofcolumns=\count303
+)
+\tikz@expandcount=\count304
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)))
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2020/02/29 v1.17 Data Visualization (1.17)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks36
+\t@pgfplots@tokb=\toks37
+\t@pgfplots@tokc=\toks38
+\pgfplots@tmpa=\dimen276
+\c@pgfplots@coordindex=\count305
+\c@pgfplots@scanlineindex=\count306
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
+.code.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.c
+ode.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplot
+soldpgfsupp_loader.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.cod
+e.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code
+.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+liststructure.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+liststructureext.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+array.code.tex
+\c@pgfplotsarray@tmp=\count307
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+matrix.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
+shared.code.tex
+\c@pgfplotstable@counta=\count308
+\t@pgfplotstable@a=\toks39
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
+deque.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.co
+de.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.da
+ta.code.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb
+.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
+s.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count309
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
+.surfshading.pgfsys-xetex.def
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
+.surfshading.pgfsys-dvipdfmx.def
+\c@pgfplotslibrarysurf@streamlen=\count310
+))))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.
+code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.cod
+e.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.c
+ode.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.c
+ode.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandle
+r.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.
+code.tex)))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.
+tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessin
+g.code.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.cod
+e.tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.
+tex)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.te
+x)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
+s.code.tex
+\pgfdecoratedcompleteddistance=\dimen277
+\pgfdecoratedremainingdistance=\dimen278
+\pgfdecoratedinputsegmentcompleteddistance=\dimen279
+\pgfdecoratedinputsegmentremainingdistance=\dimen280
+\pgf@decorate@distancetomove=\dimen281
+\pgf@decorate@repeatstate=\count311
+\pgfdecorationsegmentamplitude=\dimen282
+\pgfdecorationsegmentlength=\dimen283
+)
+\tikz@lib@dec@box=\box106
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathmorphing.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathmorphing.code.tex))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibrarydecorations.pathreplacing.code.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/decorations/pgfli
+brarydecorations.pathreplacing.code.tex))
+\pgfplots@numplots=\count312
+\pgfplots@xmin@reg=\dimen284
+\pgfplots@xmax@reg=\dimen285
+\pgfplots@ymin@reg=\dimen286
+\pgfplots@ymax@reg=\dimen287
+\pgfplots@zmin@reg=\dimen288
+\pgfplots@zmax@reg=\dimen289
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmar
+ks.code.tex
+File: pgflibraryplotmarks.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)))
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pstricks-add/pstricks-add.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2020/06/11 v0.70 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count313
+\pstFP@xia=\count314
+\pstFP@xib=\count315
+\pstFP@xfa=\count316
+\pstFP@xfb=\count317
+\pstFP@rega=\count318
+\pstFP@regb=\count319
+\pstFP@regs=\count320
+\pstFP@times=\count321
+)
+\psLoopIndex=\count322
+
+`PSTricks' v3.01  <2020/09/18> (tvz,hv)
+\pst@dima=\dimen290
+\pst@dimb=\dimen291
+\pst@dimc=\dimen292
+\pst@dimd=\dimen293
+\pst@dimg=\dimen294
+\pst@dimh=\dimen295
+\pst@dimm=\dimen296
+\pst@dimn=\dimen297
+\pst@dimo=\dimen298
+\pst@dimp=\dimen299
+\pst@hbox=\box107
+\pst@ibox=\box108
+\pst@boxg=\box109
+\pst@cnta=\count323
+\pst@cntb=\count324
+\pst@cntc=\count325
+\pst@cntd=\count326
+\pst@cntg=\count327
+\pst@cnth=\count328
+\pst@cntm=\count329
+\pst@cntn=\count330
+\pst@cnto=\count331
+\pst@cntp=\count332
+\@zero=\count333
+\pst@toks=\toks40
+(/usr/local/texlive/2020/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg))
+\psunit=\dimen300
+\psxunit=\dimen301
+\psyunit=\dimen302
+\pst@C@@rType=\count334
+\pslinewidth=\dimen303
+\psk@startLW=\dimen304
+\psk@endLW=\dimen305
+\pst@customdefs=\toks41
+\pslinearc=\dimen306
+\pst@symbolStep=\dimen307
+\pst@symbolWidth=\dimen308
+\pst@symbolLinewidth=\dimen309
+\everypsbox=\toks42
+\psframesep=\dimen310
+\pslabelsep=\dimen311
+\sh@wgridXunit=\dimen312
+\sh@wgridYunit=\dimen313
+\pst@shift=\dimen314
+(/usr/local/texlive/2020/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg
+Using PSTricks configuration for XeTeX+xdvipdfmx
+)))
+File: pstricks.tex 2020/09/18 v3.01 `PSTricks' (tvz,hv)
+ (/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2020/09/18 v3.01 `PST-fp' (hv)
+
+>>> Loading XeTeX special macros
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks/pstricks-xetex.def))
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pst-plot/pst-plot.sty
+Package: pst-plot 2011/06/05 v1.00 LaTeX wrapper for `pst-plot' (HV)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/xkeyval/pst-xkey.sty
+Package: pst-xkey 2005/11/25 v1.6 package wrapper for pst-xkey.tex (HA)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/multido/multido.sty
+Package: multido 2004/05/17 package wrapper for PSTricks `multido.tex', (HV/RN)
+
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/multido/multido.tex
+ v1.42, 2010/05/14 <tvz>
+\multido@count=\count335
+\multidocount=\count336
+\multido@stuff=\toks43
+)
+File: multido.tex 2010/05/14 v1.42 `multido' (tvz,hv)
+)
+Package: pst-plot 2011/04/13 package wrapper for pst-plot.tex (hv)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-plot/pst-plot.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-tools/pst-tools.tex
+`PST-tools' v0.10, 2020/03/24 (hv)
+\randomi=\count337
+\ranval=\count338
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-node/pst-node.tex
+ v1.42a, 2020/04/01
+\psrow=\count339
+\pscol=\count340
+\psmatrixcnt=\count341
+\psrowsep=\skip57
+\pscolsep=\skip58
+\pst@args=\count342
+\num@pts=\count343
+\pst@argcnt=\count344
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-arrow/pst-arrow.tex
+`pst-arrow' v0.01, 2016/09/01 (dr,hv)
+\pshooklength=\dimen315
+\pshookwidth=\dimen316
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-3d/pst-3d.tex
+`PST-3d' v1.11, 2010/02/14 (tvz))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-math/pst-math.tex
+`pst-math' v0.64 , (CJ,hv)) `pstricks-add' v3.89a, 2020/02/12 (dr,hv)
+\psparallelogramsep=\dimen317
+\pst@cntC=\count345
+\pst@stepcount=\count346
+\chart@ColorIndex=\dimen318
+\chart@ColorStep=\dimen319
+\pst@chartHeight=\dimen320
+\pst@chartStackDepth=\dimen321
+\pst@chartStackWidth=\dimen322
+\chart@Toggle=\count347
+\psVectorCtr=\count348
+)
+ v1.92, 2019/05/16 (tvz,hv)
+\pstRadUnit=\dimen323
+\pstRadUnitInv=\dimen324
+\pst@linecnt=\count349
+\RCD@file=\read4
+\psxlabelsep=\dimen325
+\psylabelsep=\dimen326
+\psk@subticksize=\dimen327
+\pst@xticksizeA=\dimen328
+\pst@xticksizeB=\dimen329
+\pst@xticksizeC=\dimen330
+\pst@yticksizeA=\dimen331
+\pst@yticksizeB=\dimen332
+\pst@yticksizeC=\dimen333
+\@digitcounter=\count350
+\psk@llx=\dimen334
+\psk@lly=\dimen335
+\psk@urx=\dimen336
+\psk@ury=\dimen337
+\pst@xunit=\dimen338
+\pst@yunit=\dimen339
+)
+File: pst-plot.tex 2019/05/16 1.92 `pst-plot' (tvz,hv)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pst-node/pst-node.sty
+Package: pst-node 2012/09/18 v1.01 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-node/pst-node.tex)
+File: pst-node.tex 2019/05/16 1.92 `pst-node' (tvz,hv)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pst-3d/pst-3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-3d/pst-3d.tex)
+File: pst-3d.tex 2019/05/16 v1.92 `PST-3d' (hv)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pst-math/pst-math.sty
+Package: pst-math 2018/12/16 v 0.65 package wrapper for PSTricks pst-math.tex
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pst-calculate/pst-calculate.sty
+Package: pst-calculate 2019/01/24 v. 0.02(Herbert Voss) Support for caculations
+ with floating point numbers.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+(/usr/local/texlive/2020/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-01-09 L3 programming layer (loader) 
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2021-01-09 L3 backend support: XeTeX
+
+(|extractbb --version)
+\c__kernel_sys_dvipdfmx_version_int=\count351
+\l__kernel_color_stack_int=\count352
+\g__graphics_track_int=\count353
+\l__pdf_internal_box=\box110
+\g__pdf_backend_object_int=\count354
+\g__pdf_backend_annotation_int=\count355
+\g__pdf_backend_link_int=\count356
+))
+Package: xparse 2020-10-27 L3 Experimental document command parser
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.
+tex)) (/usr/local/texlive/2020/texmf-dist/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2020/02/25 v2.8b A comprehensive (SI) units package
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/array.sty
+Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
+\col@sep=\dimen340
+\ar@mcellbox=\box111
+\extrarowheight=\dimen341
+\NC@list=\toks44
+\extratabsurround=\skip59
+\backup@length=\skip60
+\ar@cellbox=\box112
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2020-10-27 LaTeX2e option processing using LaTeX3 keys
+)
+\l__siunitx_tmp_box=\box113
+\l__siunitx_tmp_dim=\dimen342
+\l__siunitx_tmp_int=\count357
+\l__siunitx_number_mantissa_length_int=\count358
+\l__siunitx_number_uncert_length_int=\count359
+\l__siunitx_round_int=\count360
+\l__siunitx_process_decimal_int=\count361
+\l__siunitx_process_uncertainty_int=\count362
+\l__siunitx_process_fixed_int=\count363
+\l__siunitx_process_integer_min_int=\count364
+\l__siunitx_process_precision_int=\count365
+\l__siunitx_group_min_int=\count366
+\l__siunitx_angle_marker_box=\box114
+\l__siunitx_angle_unit_box=\box115
+\l__siunitx_angle_marker_dim=\dimen343
+\l__siunitx_angle_unit_dim=\dimen344
+\l__siunitx_unit_int=\count367
+\l__siunitx_unit_denominator_int=\count368
+\l__siunitx_unit_numerator_int=\count369
+\l__siunitx_unit_prefix_int=\count370
+\l__siunitx_unit_prefix_base_int=\count371
+\l__siunitx_unit_prefix_gram_int=\count372
+\l__siunitx_number_product_int=\count373
+\c__siunitx_one_fill_skip=\skip61
+\l__siunitx_table_unit_align_skip=\skip62
+\l__siunitx_table_exponent_dim=\dimen345
+\l__siunitx_table_integer_dim=\dimen346
+\l__siunitx_table_mantissa_dim=\dimen347
+\l__siunitx_table_marker_dim=\dimen348
+\l__siunitx_table_result_dim=\dimen349
+\l__siunitx_table_uncert_dim=\dimen350
+\l__siunitx_table_fill_pre_dim=\dimen351
+\l__siunitx_table_fill_post_dim=\dimen352
+\l__siunitx_table_fill_mid_dim=\dimen353
+\l__siunitx_table_pre_box=\box116
+\l__siunitx_table_post_box=\box117
+\l__siunitx_table_mantissa_box=\box118
+\l__siunitx_table_result_box=\box119
+\l__siunitx_table_number_align_skip=\skip63
+\l__siunitx_table_text_align_skip=\skip64
+(/usr/local/texlive/2020/texmf-dist/tex/latex/translator/translator.sty
+Package: translator 2020-08-03 v1.12c Easy translation of strings in LaTeX
+)))
+(/usr/local/texlive/2020/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/local/texlive/2020/texmf-dist/tex/generic/xstring/xstring.tex
+\integerpart=\count374
+Invalid UTF-8 byte or sequence at line 35 replaced by U+FFFD.
+\decimalpart=\count375
+Invalid UTF-8 byte or sequence at line 79 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 79 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 83 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 86 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 102 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 114 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 120 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 125 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 147 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 147 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 147 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 182 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 182 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 182 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 183 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 184 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 185 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 185 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 185 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 189 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 189 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 190 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 190 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 193 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 208 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 208 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 208 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 208 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 208 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 208 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 221 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 221 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 241 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 241 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 241 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 241 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 266 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 284 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 295 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 300 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 300 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 301 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 301 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 301 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 302 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 303 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 332 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 332 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 332 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 332 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 333 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 334 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 334 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 334 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 406 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 406 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 409 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 410 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 428 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 434 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 457 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 457 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 464 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 464 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 466 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 466 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 541 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 541 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 541 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 586 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 586 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 588 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 588 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 595 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 597 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 599 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 602 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 605 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 605 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 610 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 615 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 632 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 632 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 633 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 635 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 637 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 647 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 653 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 678 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 700 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 705 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 715 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 715 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 715 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 719 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 732 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 732 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 741 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 741 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 742 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 742 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 762 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 773 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 773 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 774 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 774 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 774 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 797 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 797 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 810 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 824 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 824 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 831 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 838 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 838 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 846 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 846 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 861 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 862 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 864 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 864 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 908 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 909 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 909 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 934 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 934 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 936 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 936 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 940 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 940 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 962 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 962 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 964 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 965 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1006 replaced by U+FFFD.
+)
+Package: xstring 2019/02/06 v1.83 String manipulations (CT)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pst-math/pst-math.tex)
+File: pst-math.tex 2019/05/16 v1.92 `PST-math' (hv)
+\c@Rand@No=\count376
+\c@Random@Left=\count377
+\c@Random@Right=\count378
+\c@Random@No@max=\count379
+)
+Package: pstricks-add 2018/02/04 v. 0.16 package wrapper for pstricks-add.tex (
+hv)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pstricks-add/pstricks-add.tex)
+File: pstricks-add.tex 2019/05/16 v1.92 `PSTricks-add' (hv)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
+s/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.
+code.tex
+File: pgflibraryarrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\arrowsize=\dimen354
+)) (/usr/local/texlive/2020/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+) (/usr/local/texlive/2020/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2021/01/09 v0.5r Insert pages of external PDF documents (AM)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
+\ESO@tempdima=\dimen355
+\ESO@tempdimb=\dimen356
+)
+\AM@pagewidth=\dimen357
+\AM@pageheight=\dimen358
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdfpages/ppxetex.def
+File: ppxetex.def 2021/01/09 v0.5r Pdfpages driver for XeTeX (AM)
+)
+\pdfpages@includegraphics@status=\count380
+\AM@pagebox=\box120
+\AM@global@opts=\toks45
+\AM@pagecnt=\count381
+\AM@toc@title=\toks46
+\c@AM@survey=\count382
+\AM@templatesizebox=\box121
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count383
+\Gm@cntv=\count384
+\c@Gm@tempcnt=\count385
+\Gm@bindingoffset=\dimen359
+\Gm@wd@mp=\dimen360
+\Gm@odd@mp=\dimen361
+\Gm@even@mp=\dimen362
+\Gm@layoutwidth=\dimen363
+\Gm@layoutheight=\dimen364
+\Gm@layouthoffset=\dimen365
+\Gm@layoutvoffset=\dimen366
+\Gm@dimlist=\toks47
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2021/01/04 v4.0 Extensive control of page headers and footers
+
+\f@nch@headwidth=\skip65
+\f@nch@O@elh=\skip66
+\f@nch@O@erh=\skip67
+\f@nch@O@olh=\skip68
+\f@nch@O@orh=\skip69
+\f@nch@O@elf=\skip70
+\f@nch@O@erf=\skip71
+\f@nch@O@olf=\skip72
+\f@nch@O@orf=\skip73
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+)
+\@linkdim=\dimen367
+\Hy@linkcounter=\count386
+\Hy@pagecounter=\count387
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count388
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4717.
+\c@Hy@tempcnt=\count389
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen368
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/local/texlive/2020/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count390
+\Field@Width=\dimen369
+\Fld@charsize=\dimen370
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
+with kernel methods
+)
+\Hy@abspage=\count391
+\c@Item=\count392
+\c@Hfootnote=\count393
+)
+Package hyperref Info: Driver (autodetected): hxetex.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2020-05-15 v7.00e Hyperref driver for XeTeX
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/stringenc/stringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box122
+\c@Hy@AnnotLevel=\count394
+\HyField@AnnotCount=\count395
+\Fld@listcount=\count396
+\c@bookmark@seq@number=\count397
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
+with kernel methods
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip74
+)
+\c@pointsexercice=\count398
+\c@pointssujetTOTAL=\count399
+\c@numeroexercice=\count400
+\c@remarque=\count401
+\c@bug=\count402
+\c@dsxl=\count403
+ (./DSXL_3_doc_and_exercices.aux)
+\openout1 = `DSXL_3_doc_and_exercices.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 177.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
+77.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 177.
+LaTeX Font Info:    ... okay on input line 177.
+LaTeX Info: Redefining \degres on input line 177.
+LaTeX Info: Redefining \dots on input line 177.
+LaTeX Info: Redefining \up on input line 177.
+
+Package pgfplots notification 'compat/show suggested version=true': document ha
+s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
+
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
+File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/translator/translator-basic-dicti
+onary-English.dict
+Dictionary: translator-basic-dictionary, Language: English 
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-45.43198pt
+* \headheight=12.0pt
+* \headsep=18.06749pt
+* \topskip=10.0pt
+* \footskip=25.29494pt
+* \marginparwidth=125.0pt
+* \marginparsep=7.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 177.
+(/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.s
+ty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count404
+)
+LaTeX Info: Redefining \ref on input line 177.
+LaTeX Info: Redefining \pageref on input line 177.
+LaTeX Info: Redefining \nameref on input line 177.
+ (./DSXL_3_doc_and_exercices.out) (./DSXL_3_doc_and_exercices.out)
+\@outlinefile=\write6
+\openout6 = `DSXL_3_doc_and_exercices.out'.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 177
+.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 177
+.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 17
+7.
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/generic/stringenc/se-ascii-print.def
+File: se-ascii-print.def 2019/11/29 v1.12 stringenc: Printable ASCII characters
+
+)
+[1
+
+
+] [2
+
+] (./input_files/DSXL_3_doc_and_exercices_INTRODUCTION.tex) [1
+
+] [2
+
+]
+(./DSXL_3_doc_and_exercices.toc)
+\tf@toc=\write7
+\openout7 = `DSXL_3_doc_and_exercices.toc'.
+
+ [3] [4
+
+] (./DSXL_3_doc_and_exercices.lof)
+\tf@lof=\write8
+\openout8 = `DSXL_3_doc_and_exercices.lof'.
+
+
+[5] [6
+
+] (./DSXL_3_doc_and_exercices.lot)
+\tf@lot=\write9
+\openout9 = `DSXL_3_doc_and_exercices.lot'.
+
+ [7] [8
+
+]
+Chapitre 1.
+(./input_files/DSXL_3_doc_and_exercices_ORGANISATION.tex) [1
+
+] [2
+
+]
+Chapitre 2.
+(./input_files/DSXL_3_doc_and_exercices_LISTES_EXERCICES.tex [3] [4]
+Underfull \vbox (badness 7944) has occurred while \output is active []
+
+ [5]
+[6] [7]
+Overfull \hbox (89.25264pt too wide) in paragraph at lines 474--475
+[][] 
+ []
+
+[8]) [9] [10
+
+]
+Chapitre 3.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 195.
+
+(./input_files/DSXL_3_doc_and_exercices_CREATION_EXERCICE.tex
+File: ./images/creation_exercice_01.png Graphic file (type bmp)
+<./images/creation_exercice_01.png>
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 17.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 17.
+
+
+Overfull \hbox (43.00603pt too wide) in paragraph at lines 41--43
+\TU/lmr/bx/n/10 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_t
+ext_latex_wrapper_in.tex\TU/lmr/m/it/10 . 
+ []
+
+
+Overfull \hbox (2.223pt too wide) in paragraph at lines 52--54
+\TU/lmr/bx/n/9 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_te
+xt_latex_wrapper_in.tex 
+ []
+
+[11]
+Overfull \hbox (249.79715pt too wide) in paragraph at lines 68--69
+[]\TU/lmr/m/n/10 Si vous est arrivé ici, c’est que vous avez un fichier Latex \
+TU/lmr/bx/n/10 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_te
+xt_latex_wrapper_in.tex
+ []
+
+
+Overfull \hbox (25.568pt too wide) in paragraph at lines 206--206
+[]\TU/lmtt/m/n/5 \item[2)] Déterminer les éventuels antécédents de $0$ ; $5$ et
+ $-5$. On donnera les solutions exactes.[] 
+ []
+
+
+Overfull \hbox (150.35297pt too wide) in paragraph at lines 206--206
+[]\TU/lmtt/m/n/5 Donc (propriété équation-produit), comme $1+\sqrt{6}\in D$ et 
+$1-\sqrt{6}\in D$, on a l'ensemble des solutions $ S = \{1+\sqrt{6} \,;\,1-\sqr
+t{6} \}$[] 
+ []
+
+
+Overfull \hbox (126.45798pt too wide) in paragraph at lines 206--206
+[]\TU/lmtt/m/n/5 Donc (propriété équation-produit), comme $1+\sqrt{11}\not\in D
+$ et $1-\sqrt{11}\in D$, on a l'ensemble des solutions $ S = \{1-\sqrt{11} \}$[
+] 
+ []
+
+File: ./images/creation_exercice_02.png Graphic file (type bmp)
+<./images/creation_exercice_02.png>
+File: ./images/creation_exercice_03.png Graphic file (type bmp)
+<./images/creation_exercice_03.png>
+
+Underfull \vbox (badness 2088) has occurred while \output is active []
+
+ [12]
+Overfull \hbox (39.93602pt too wide) in paragraph at lines 275--277
+\TU/lmr/bx/n/10 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_t
+ext_latex_wrapper_in.tex 
+ []
+
+[13]
+Overfull \hbox (16.96602pt too wide) in paragraph at lines 285--286
+[]\TU/lmr/bx/n/10 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl
+_text_latex_wrapper_out.tex 
+ []
+
+File: ./images/creation_exercice_04.png Graphic file (type bmp)
+<./images/creation_exercice_04.png>
+File: ./images/creation_exercice_05.png Graphic file (type bmp)
+<./images/creation_exercice_05.png>
+File: ./images/creation_exercice_06.png Graphic file (type bmp)
+<./images/creation_exercice_06.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
+
+ []
+
+File: ./images/creation_exercice_07.png Graphic file (type bmp)
+<./images/creation_exercice_07.png>
+File: ./images/creation_exercice_08.png Graphic file (type bmp)
+<./images/creation_exercice_08.png>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
+File: ./images/creation_exercice_09.png Graphic file (type bmp)
+<./images/creation_exercice_09.png>
+File: ./images/creation_exercice_10.png Graphic file (type bmp)
+<./images/creation_exercice_10.png>
+
+[15]
+Overfull \hbox (16.78pt too wide) in paragraph at lines 369--372
+\TU/lmr/bx/n/9 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_te
+xt_latex_wrapper_out.tex \TU/lmr/m/n/10 en mode
+ []
+
+File: ./images/creation_exercice_11.png Graphic file (type bmp)
+<./images/creation_exercice_11.png>
+File: ./images/creation_exercice_12.png Graphic file (type bmp)
+<./images/creation_exercice_12.png>
+File: ./images/creation_exercice_13.png Graphic file (type bmp)
+<./images/creation_exercice_13.png>
+[16]
+Overfull \hbox (19.74602pt too wide) in paragraph at lines 412--414
+\TU/lmr/bx/n/10 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_t
+ext_latex_wrapper_out.tex\TU/lmr/m/n/10 . 
+ []
+
+File: ./images/creation_exercice_var_01.png Graphic file (type bmp)
+<./images/creation_exercice_var_01.png>
+File: ./images/creation_exercice_var_02.png Graphic file (type bmp)
+<./images/creation_exercice_var_02.png>
+
+Overfull \hbox (11.66464pt too wide) in paragraph at lines 428--430
+ [][] 
+ []
+
+
+Overfull \hbox (7.266pt too wide) in paragraph at lines 441--441
+ []  \TU/lmtt/m/n/10 \draw[line width=2.pt,smooth,samples=100,domain=-3.0:4.0] 
+plot(\x,{(\x)^(2.0)-2*(\x)-5});[] 
+ []
+
+
+Overfull \hbox (28.266pt too wide) in paragraph at lines 456--456
+ []\TU/lmtt/m/n/10 Par lecture graphique on trouve $S = [-3\,;\,-0.7] \cup  [2.
+7\,;\,4]$ \poids{5} %en pourcentage[] 
+ []
+
+[17]
+Overfull \hbox (26.21931pt too wide) in paragraph at lines 478--480
+[]\TU/lmr/m/it/10 Le remplacement de $\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 3$ \T
+U/lmr/m/it/10 par $\OMS/cmsy/m/n/10 n$\TU/lmr/m/it/10 var$\OMS/cmsy/m/n/10 f\OM
+L/cmm/m/it/10 xA\OMS/cmsy/m/n/10 gf^^@\OT1/cmr/m/n/10 3\OMS/cmsy/m/n/10 g$ \TU/
+lmr/m/it/10 et $\OT1/cmr/m/n/10 4$ \TU/lmr/m/it/10 par $\OMS/cmsy/m/n/10 n$\TU/
+lmr/m/it/10 var$\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 xB\OMS/cmsy/m/n/10 gf\OT1/cm
+r/m/n/10 4\OMS/cmsy/m/n/10 g$
+ []
+
+
+Overfull \hbox (96.516pt too wide) in paragraph at lines 492--492
+ [] \TU/lmtt/m/n/10 %\draw[line width=2.pt,smooth,samples=100,domain=\var{xA}{-
+3}:\var{xB}{4.}] plot(\x,{(\x)^(2.0)-2*(\x)-5});[] 
+ []
+
+
+Overfull \hbox (117.516pt too wide) in paragraph at lines 508--508
+ []\TU/lmtt/m/n/10 Par lecture graphique on trouve $S =\var{ques5solS}{ [-3\,;\
+,-0.7] \cup  [2.7\,;\,4]}$ \poids{5} %en pourcentage[] 
+ []
+
+File: ./images/creation_exercice_var_03b.png Graphic file (type bmp)
+<./images/creation_exercice_var_03b.png>
+[18]
+File: ./images/creation_exercice_var_03c.png Graphic file (type bmp)
+<./images/creation_exercice_var_03c.png>
+Missing character: There is no − in font cmr10!
+Missing character: There is no − in font cmr10!
+
+Overfull \hbox (16.78pt too wide) in paragraph at lines 577--580
+\TU/lmr/bx/n/9 DSXL_3_programme/dsxl_tex_exercice/latex_wrapper_in_full/dsxl_te
+xt_latex_wrapper_out.tex \TU/lmr/m/n/10 en mode
+ []
+
+File: ./images/creation_exercice_var_04a.png Graphic file (type bmp)
+<./images/creation_exercice_var_04a.png>
+File: ./images/creation_exercice_var_04b.png Graphic file (type bmp)
+<./images/creation_exercice_var_04b.png>
+File: ./images/creation_exercice_var_04c.png Graphic file (type bmp)
+<./images/creation_exercice_var_04c.png>
+
+Underfull \vbox (badness 4001) has occurred while \output is active []
+
+ [19]
+Underfull \hbox (badness 10000) in paragraph at lines 591--592
+
+ []
+
+
+Overfull \hbox (96.51602pt too wide) in paragraph at lines 598--598
+ []\TU/lmtt/m/n/9 %\draw[line width=2.pt,smooth,samples=100,domain=\var{xA}{-3}
+:\var{xB}{4.}] plot(\x,{\var{ftikz}{(\x)^(2.0)-2*(\x)-5}});[] 
+ []
+
+File: ./images/creation_exercice_var_05a.png Graphic file (type bmp)
+<./images/creation_exercice_var_05a.png>
+File: ./images/creation_exercice_var_05b.png Graphic file (type bmp)
+<./images/creation_exercice_var_05b.png>
+
+Overfull \hbox (8.75842pt too wide) in paragraph at lines 602--608
+ [] 
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 659--660
+
+ []
+
+
+Overfull \hbox (9.81624pt too wide) in paragraph at lines 720--720
+[]                        \TU/lmtt/m/n/9 if (yB>ymin+margey) and (yB<ymax-marge
+y) and (yA>ymin+margey) and (yA<ymax-margey) :[] 
+ []
+
+[21]
+Overfull \hbox (227.16635pt too wide) in paragraph at lines 720--720
+[]                                \TU/lmtt/m/n/9 # La condition suivante permet
+ juste de restreindre le nombre de possibilités en imposant un nombre minimal d
+e solutions :[] 
+ []
+
+
+Overfull \hbox (5.09123pt too wide) in paragraph at lines 720--720
+[]                                \TU/lmtt/m/n/9 if not(len(list_y_0_sol)<5 or 
+len(list_y_1_sol)<5 or len(list_y_2_sol)<5) :[] 
+ []
+
+
+Overfull \hbox (19.26653pt too wide) in paragraph at lines 720--720
+[]                                    \TU/lmtt/m/n/9 print('A(',xA,' , ',yA,' )
+ B( ',xB,' , ',yB,' ) , P ( ', x0,' , ',y0,' ) \[] 
+ []
+
+[22]
+Overfull \hbox (343.266pt too wide) in paragraph at lines 771--771
+ []  \TU/lmtt/m/n/10 r'quespBq3sol2ant:\begin{array}{lll} f(x) &=& 0 \\ (x-1)^2
+ -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqrt{6})  (x-1+\sqrt{6}) &=&0 
+\\\end{array}' ,[] 
+ []
+
+
+Overfull \hbox (458.766pt too wide) in paragraph at lines 771--771
+ []  \TU/lmtt/m/n/10 r'quespBq3sol1ant:\begin{array}{lll} f(x) &=&5 \\ (x-1)^2 
+-6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=&0 \\ (x-1-\sqrt{11
+})  (x-1+\sqrt{11}) &=&0\end{array}' ,[] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 777.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 777.
+
+
+Overfull \hbox (224.016pt too wide) in paragraph at lines 825--825
+[]        \TU/lmtt/m/n/10 'liste_notions' :  [ '2nd' , 'développement' , 'fonct
+ion polynôme' , 'lecture graphique' , 'maximum' , 'tableau de variations' ] ,[]
+ 
+ []
+
+
+Overfull \hbox (19.266pt too wide) in paragraph at lines 825--825
+[]                              \TU/lmtt/m/n/10 'ypAq3a:-5' , 'ypAq3b2ant:2' , 
+'xpAq3bsol1:-1.8' , 'xpAq3bsol2:3.7' ,[] 
+ []
+
+
+Overfull \hbox (455.016pt too wide) in paragraph at lines 825--825
+[]                              \TU/lmtt/m/n/10 'quespBq3sol2ant:\begin{array}{
+lll} f(x) &=& 0 \\ (x-1)^2 -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqrt
+{6})  (x-1+\sqrt{6}) &=&0 \\\end{array}' ,[] 
+ []
+
+
+Overfull \hbox (570.516pt too wide) in paragraph at lines 825--825
+[]                              \TU/lmtt/m/n/10 'quespBq3sol1ant:\begin{array}{
+lll} f(x) &=&5 \\ (x-1)^2 -6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11}
+)^2  &=&0 \\ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0\end{array}' ,[] 
+ []
+
+[23]
+Overfull \hbox (66.516pt too wide) in paragraph at lines 834--834
+[]\TU/lmtt/m/n/10 SyntaxError: (unicode error) 'unicodeescape' codec can't deco
+de bytes in position 7-8: truncated \xXX escape[] 
+ []
+
+
+Package imakeidx Warning: Undefined index file `DSXL_3_doc_and_exercices' on in
+put line 845.
+
+
+Overfull \hbox (53.92377pt too wide) in paragraph at lines 845--846
+[]\TU/lmr/m/n/10 Pour plus d’explications sur unicode error, voir : []$[][][][]
+[] [] [] [] [][][] [] [][][][][][][][][][][][] [] [][][] [] [][][][][][][][][] 
+[] [][][][][][][][][] [] [][][][][][][][][][][][][][][][][][][]$[] 
+ []
+
+
+Overfull \hbox (24.516pt too wide) in paragraph at lines 891--891
+[]                              \TU/lmtt/m/n/10 r'ypAq3a:-5' , 'ypAq3b2ant:2' ,
+ 'xpAq3bsol1:-1.8' , 'xpAq3bsol2:3.7' ,[] 
+ []
+
+
+Overfull \hbox (460.266pt too wide) in paragraph at lines 891--891
+[]                              \TU/lmtt/m/n/10 r'quespBq3sol2ant:\begin{array}
+{lll} f(x) &=& 0 \\ (x-1)^2 -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqr
+t{6})  (x-1+\sqrt{6}) &=&0 \\\end{array}' ,[] 
+ []
+
+
+Overfull \hbox (575.766pt too wide) in paragraph at lines 891--891
+[]                              \TU/lmtt/m/n/10 r'quespBq3sol1ant:\begin{array}
+{lll} f(x) &=&5 \\ (x-1)^2 -6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11
+})^2  &=&0 \\ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0\end{array}' ,[] 
+ []
+
+[24] [25]
+Overfull \hbox (355.266pt too wide) in paragraph at lines 993--993
+[]    \TU/lmtt/m/n/10 quespBq3sol2ant = r'\begin{array}{lll}  f(x) &=& 0 \\  (x
+-1)^2 -6  &=&0 \\  (x-1)^2 -(\sqrt{6})^2  &=&0 \\  (x-1-\sqrt{6})  (x-1+\sqrt{6
+}) &=&0 \\ \end{array}'[] 
+ []
+
+
+Overfull \hbox (465.516pt too wide) in paragraph at lines 993--993
+[]    \TU/lmtt/m/n/10 quespBq3sol1ant = r'\begin{array}{lll} f(x) &=&5 \\  (x-1
+)^2 -6  &=&5 \\   (x-1)^2 -11  &=&0 \\  (x-1)^2 -(\sqrt{11})^2  &=&0 \\  (x-1-\
+sqrt{11})  (x-1+\sqrt{11}) &=&0 \end{array}'[] 
+ []
+
+
+Overfull \hbox (423.45586pt too wide) in paragraph at lines 1038--1038
+[]\TU/lmtt/m/n/5 valeurs par defaut --> quespBq3sol2ant:\begin{array}{lll} f(x)
+ &=& 0 \\ (x-1)^2 -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqrt{6})  (x-
+1+\sqrt{6}) &=&0 \\\end{array} | quespBq3sol2ant:\begin{array}{lll}  f(x) &=& 0
+ \\  (x-1)^2 -6  &=&0 \\  (x-1)^2 -(\sqrt{6})^2  &=&0 \\  (x-1-\sqrt{6})  (x-1+
+\sqrt{6}) &=&0 \\ \end{array}  <---votre valeur :[] 
+ []
+
+[26]
+Overfull \hbox (537.6208pt too wide) in paragraph at lines 1038--1038
+[]\TU/lmtt/m/n/5 valeurs par defaut --> quespBq3sol1ant:\begin{array}{lll} f(x)
+ &=&5 \\ (x-1)^2 -6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=&0
+ \\ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0\end{array} | quespBq3sol1ant:\begin{a
+rray}{lll} f(x) &=&5 \\  (x-1)^2 -6  &=&5 \\   (x-1)^2 -11  &=&0 \\  (x-1)^2 -(
+\sqrt{11})^2  &=&0 \\  (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0 \end{array}  <---v
+otre valeur :[] 
+ []
+
+
+Overfull \hbox (28.266pt too wide) in paragraph at lines 1104--1104
+ []  \TU/lmtt/m/n/10 r'fm2pBq1:(\sqrt{2})^2 - 2 \times \sqrt{2} -5 = 2 - 2 \tim
+es \sqrt{2} -5 =  -3 - 2  \sqrt{2}'[] 
+ []
+
+
+Overfull \hbox (343.266pt too wide) in paragraph at lines 1104--1104
+ []  \TU/lmtt/m/n/10 r'quespBq3sol2ant:\begin{array}{lll} f(x) &=& 0 \\ (x-1)^2
+ -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqrt{6})  (x-1+\sqrt{6}) &=&0 
+\\\end{array}' ,[] 
+ []
+
+
+Overfull \hbox (458.766pt too wide) in paragraph at lines 1104--1104
+ []  \TU/lmtt/m/n/10 r'quespBq3sol1ant:\begin{array}{lll} f(x) &=&5 \\ (x-1)^2 
+-6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=&0 \\ (x-1-\sqrt{11
+})  (x-1+\sqrt{11}) &=&0\end{array}' ,[] 
+ []
+
+[27] [28]
+Overfull \hbox (44.016pt too wide) in paragraph at lines 1228--1228
+ []      \TU/lmtt/m/n/10 votre valeur --> ques4aSol: \mbox{ pour } x \approx -1
+.65 \mbox{ et } x \approx 3.65\mbox{.}[] 
+ []
+
+
+Overfull \hbox (54.516pt too wide) in paragraph at lines 1228--1228
+ []      \TU/lmtt/m/n/10 votre valeur --> quespA4bSol: \mbox{ pour } x \approx 
+-1.45 \mbox{ et } x \approx 3.45\mbox{.}[] 
+ []
+
+
+Overfull \hbox (122.766pt too wide) in paragraph at lines 1242--1242
+ []                \TU/lmtt/m/n/10 text_antecedent = text_antecedent+ r' \mbox{
+ et } x \approx '+str(lst_antecedent[1]) +r'\mbox{.}'[] 
+ []
+
+[29]
+Overfull \hbox (222.516pt too wide) in paragraph at lines 1257--1257
+ []            \TU/lmtt/m/n/10 str_ques5solS =  '[ '+str(xA)+r'\,;\,'+str(lst_a
+ntecedent[0])+' ] \cup  [ '+str(lst_antecedent[1])+r'\,;\,'+str(xB)+' ]'[] 
+ []
+
+
+Overfull \hbox (17.766pt too wide) in paragraph at lines 1257--1257
+ []            \TU/lmtt/m/n/10 str_ques5solS =  '[ '+str(lst_antecedent[1])+r'\
+,;\,'+str(lst_antecedent[0])+' ]'[] 
+ []
+
+
+Overfull \hbox (28.266pt too wide) in paragraph at lines 1308--1308
+ []  \TU/lmtt/m/n/10 r'fm2pBq1:(\sqrt{2})^2 - 2 \times \sqrt{2} -5 = 2 - 2 \tim
+es \sqrt{2} -5 =  -3 - 2  \sqrt{2}'[] 
+ []
+
+
+Overfull \hbox (70.266pt too wide) in paragraph at lines 1323--1323
+ []    \TU/lmtt/m/n/10 #str_fm2pBq1= r'(\sqrt{2})^2 - 2 \times \sqrt{2} -5 = 2 
+- 2 \times \sqrt{2} -5 =  -3 - 2  \sqrt{2}'[] 
+ []
+
+[30]
+Overfull \hbox (128.016pt too wide) in paragraph at lines 1334--1334
+ []\TU/lmtt/m/n/10 valeurs par defaut --> fm2pBq1: (\sqrt{2})^2 - 2 \times \sqr
+t{2} -5 = 2 - 2 \times \sqrt{2} -5 =  -3 - 2  \sqrt{2}[] 
+ []
+
+
+Overfull \hbox (12.516pt too wide) in paragraph at lines 1334--1334
+ []      \TU/lmtt/m/n/10 votre valeur --> fm2pBq1:-5 - 2 \sqrt{2} + \left(\sqrt
+{2}\right)^{2} = -3 - 2 \sqrt{2}[] 
+ []
+
+
+Overfull \hbox (343.266pt too wide) in paragraph at lines 1369--1369
+ []  \TU/lmtt/m/n/10 r'quespBq3sol2ant:\begin{array}{lll} f(x) &=& 0 \\ (x-1)^2
+ -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqrt{6})  (x-1+\sqrt{6}) &=&0 
+\\\end{array}' ,[] 
+ []
+
+
+Overfull \hbox (416.766pt too wide) in paragraph at lines 1383--1383
+ []    \TU/lmtt/m/n/10 str_quespBq3sol2ant =r'\begin{array}{lll}  f(x) &=& '+st
+r_ypBq3deuxant+r' \\ '+sym.latex(f_can-ypBq3deuxant)+r' &=&0 \\ '+sym.latex(f_f
+actor)+r' &=&0 \\ \end{array}'[] 
+ []
+
+
+Overfull \hbox (390.516pt too wide) in paragraph at lines 1383--1383
+ []    \TU/lmtt/m/n/10 #quespBq3sol2ant = r'\begin{array}{lll}  f(x) &=& 0 \\  
+(x-1)^2 -6  &=&0 \\  (x-1)^2 -(\sqrt{6})^2  &=&0 \\  (x-1-\sqrt{6})  (x-1+\sqrt
+{6}) &=&0 \\ \end{array}'[] 
+ []
+
+
+Overfull \hbox (427.266pt too wide) in paragraph at lines 1397--1397
+ []\TU/lmtt/m/n/10 valeurs par defaut --> quespBq3sol2ant:\begin{array}{lll} f(
+x) &=& 0 \\ (x-1)^2 -6  &=&0 \\ (x-1)^2-(\sqrt{6})^2  &=&0 \\ (x-1-\sqrt{6})  (
+x-1+\sqrt{6}) &=&0 \\\end{array}[] 
+ []
+
+
+Overfull \hbox (511.266pt too wide) in paragraph at lines 1397--1397
+ []      \TU/lmtt/m/n/10 votre valeur --> quespBq3sol2ant:\begin{array}{lll}  f
+(x) &=& 0 \\ \left(x - 1\right)^{2} - 6 &=&0 \\ \left(x - 1 + \sqrt{6}\right) \
+left(x - \sqrt{6} - 1\right) &=&0 \\ \end{array}[] 
+ []
+
+[31]
+Overfull \hbox (458.766pt too wide) in paragraph at lines 1404--1404
+ []  \TU/lmtt/m/n/10 r'quespBq3sol1ant:\begin{array}{lll} f(x) &=&5 \\ (x-1)^2 
+-6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=&0 \\ (x-1-\sqrt{11
+})  (x-1+\sqrt{11}) &=&0\end{array}' ,[] 
+ []
+
+
+Overfull \hbox (500.766pt too wide) in paragraph at lines 1438--1438
+ []    \TU/lmtt/m/n/10 #quespBq3sol1ant = r'\begin{array}{lll} f(x) &=&5 \\  (x
+-1)^2 -6  &=&5 \\   (x-1)^2 -11  &=&0 \\  (x-1)^2 -(\sqrt{11})^2  &=&0 \\  (x-1
+-\sqrt{11})  (x-1+\sqrt{11}) &=&0 \end{array}'[] 
+ []
+
+
+Overfull \hbox (395.766pt too wide) in paragraph at lines 1438--1438
+ []    \TU/lmtt/m/n/10 str_quespBq3sol1ant =r'\begin{array}{lll}  f(x) &=& '+st
+r_ypBq3unant+r' \\ '+sym.latex(f_can-ypBq3unant)+r' &=&0 \\ '+sym.latex(f_facto
+r)+r' &=&0 \\ \end{array}'[] 
+ []
+
+
+Overfull \hbox (390.516pt too wide) in paragraph at lines 1438--1438
+ []    \TU/lmtt/m/n/10 #quespBq3sol2ant = r'\begin{array}{lll}  f(x) &=& 0 \\  
+(x-1)^2 -6  &=&0 \\  (x-1)^2 -(\sqrt{6})^2  &=&0 \\  (x-1-\sqrt{6})  (x-1+\sqrt
+{6}) &=&0 \\ \end{array}'[] 
+ []
+
+
+Overfull \hbox (542.766pt too wide) in paragraph at lines 1452--1452
+ []\TU/lmtt/m/n/10 valeurs par defaut --> quespBq3sol1ant:\begin{array}{lll} f(
+x) &=&5 \\ (x-1)^2 -6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=
+&0 \\ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0\end{array}[] 
+ []
+
+
+Overfull \hbox (527.016pt too wide) in paragraph at lines 1452--1452
+ []      \TU/lmtt/m/n/10 votre valeur --> quespBq3sol1ant:\begin{array}{lll}  f
+(x) &=& 5 \\ \left(x - 1\right)^{2} - 11 &=&0 \\ \left(x - 1 + \sqrt{11}\right)
+ \left(x - \sqrt{11} - 1\right) &=&0 \\ \end{array}[] 
+ []
+
+[32]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1466.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@@underline' on input line 1466.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\hbox' on input line 1466.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mathsurround' on input line 1466.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\z@' on input line 1466.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1466.
+
+
+Overfull \hbox (8.09766pt too wide) in paragraph at lines 1475--1476
+[]\TU/lmr/m/n/10 Les variables libres (sous certaines contraintes) qui sont gén
+érées par le programme $\OML/cmm/m/it/10 python[]contraintes:py$ 
+ []
+
+
+Overfull \hbox (170.81682pt too wide) in paragraph at lines 1494--1496
+\OML/cmm/m/it/10 DSXL[]\OT1/cmr/m/n/10 3[]\OML/cmm/m/it/10 programme$\TU/lmr/m/
+n/10 ) et le charge. Si ce programme n’existe pas, c’est le programme $\OML/cmm
+/m/it/10 :=dsxl[]tex[]exercice=dsxl[]text[]python[]wrapper[]out:py$
+ []
+
+
+Overfull \hbox (73.68715pt too wide) in paragraph at lines 1496--1499
+[]\TU/lmr/m/n/10 Le programme vérifie l’existence de $\OML/cmm/m/it/10 latex[]m
+ain[]exercice[]test:tex$ \TU/lmr/m/n/10 (à la racine du dossier $\OML/cmm/m/it/
+10 DSXL[]\OT1/cmr/m/n/10 3[]\OML/cmm/m/it/10 programme$\TU/lmr/m/n/10 )
+ []
+
+
+Overfull \hbox (58.0528pt too wide) in paragraph at lines 1496--1499
+\TU/lmr/m/n/10 et le charge. Si ce programme n’existe pas, c’est le programme $
+\OML/cmm/m/it/10 :=dsxl[]tex[]exercice=dsxl[]text[]python[]wrapper[]in:tex$
+ []
+
+
+Overfull \hbox (39.09938pt too wide) in paragraph at lines 1496--1499
+\TU/lmr/m/n/10 qu’il charge et sauvegarde, à la racine du dossier $\OML/cmm/m/i
+t/10 DSXL[]\OT1/cmr/m/n/10 3[]\OML/cmm/m/it/10 programme$\TU/lmr/m/n/10 , sous 
+le nom $\OML/cmm/m/it/10 latex[]main[]exercice[]test:tex$ 
+ []
+
+
+Overfull \hbox (41.1339pt too wide) in paragraph at lines 1501--1503
+[]\TU/lmr/m/n/10 Dans le cas de notre exercice, nous copions $\OML/cmm/m/it/10 
+fonction[]param[]exercice[]run:py$ \TU/lmr/m/n/10 à la racine du dossier $\OML/
+cmm/m/it/10 DSXL[]\OT1/cmr/m/n/10 3[]\OML/cmm/m/it/10 programme$
+ []
+
+
+Overfull \hbox (121.5875pt too wide) in paragraph at lines 1504--1505
+[]\TU/lmr/m/n/10 En cliquant sur le bouton [], le programme vérifie l’existence
+ de $\OML/cmm/m/it/10 fonction[]param[]exercice[]test:py$
+ []
+
+
+Overfull \hbox (54.4727pt too wide) in paragraph at lines 1517--1518
+[]$\OML/cmm/m/it/10 :=dsxl[]tex[]exercice=latex[]test[]full[]text[]mode[]C=late
+x[]test[]full[]text[]C:tex$ 
+ []
+
+
+Overfull \hbox (54.7477pt too wide) in paragraph at lines 1519--1520
+[]$\OML/cmm/m/it/10 :=dsxl[]tex[]exercice=latex[]test[]full[]text[]mode[]E=late
+x[]test[]full[]text[]E:tex$ 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1523.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1523.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1523.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1523.
+
+) [33] [34
+
+]
+Chapitre 4.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 198.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 198.
+
+(./input_files/DSXL_3_doc_and_exercices_CREATION_DEVOIR.tex) [35] [36
+
+]
+Annexe A.
+(./input_files/Appendix_Liste_mots_cles.tex) [37] [38
+
+]
+Annexe B.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 207.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 207.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 207.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 207.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 207.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 207.
+
+(./input_files/DSXL_3_DOCUMENT_MISE_A_JOUR.tex) [39] [40
+
+] [41
+
+] [42
+
+] [43]
+[44
+
+]
+runsystem(makeindex notions.idx)...executed safely (allowed).
+
+ (./notions.ind) [45
+
+] [46
+
+]
+runsystem(makeindex dsxlindex.idx)...executed safely (allowed).
+
+ (./dsxlindex.ind
+Overfull \hbox (22.00537pt too wide) in paragraph at lines 12--14
+[]\TU/lmr/m/n/10 , 
+ []
+
+) [47
+
+] (./DSXL_3_doc_and_exercices.aux)
+Package rerunfilecheck Info: File `DSXL_3_doc_and_exercices.out' has not change
+d.
+(rerunfilecheck)             Checksum: FBA5FD741B3BD15530DFD99FA6928FC5;5161.
+ )
+(\end occurred inside a group at level 1)
+
+### simple group (level 1) entered at line 361 ({)
+### bottom level 
+Here is how much of TeX's memory you used:
+ 40288 strings out of 477220
+ 903368 string characters out of 5830449
+ 1397779 words of memory out of 5000000
+ 59198 multiletter control sequences out of 15000+600000
+ 422944 words of font info for 140 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 111i,13n,117p,745b,1040s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on DSXL_3_doc_and_exercices.pdf (57 pages).

@@ -1,0 +1,26 @@
+\begin{theindex}
+
+  \item $\backslash$EXERCICE, \hyperpage{11}
+  \item $\backslash$var$\{\}\{\}$ dans un environnement graphique, 
+		\hyperpage{18}
+
+  \indexspace
+
+  \item balises $\%E>$ (début énoncé)  $\%E<$ (fin énoncé),  $\%C>$ (début corrigé)  $\%C<$ (fin corrigé), 
+		\hyperpage{11}, \hyperpage{13}
+  \item bouton  \fbox{$\backslash$var$\{\}\{\}$}, \hyperpage{16}
+  \item bouton \fbox{$\backslash$poids$\{\}$\% en pourcentage}, 
+		\hyperpage{15}
+  \item bouton \fbox{WRAP UP
+    \subitem }, \hyperpage{11}
+
+  \indexspace
+
+  \item convention barème, \hyperpage{15}
+
+  \indexspace
+
+  \item mode C, \hyperpage{14}
+  \item mode E, \hyperpage{14}
+
+\end{theindex}

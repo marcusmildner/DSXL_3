@@ -1,0 +1,164 @@
+%DEBUT EnTete
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{pgf,tikz}
+%https://stackoverflow.com/questions/67845020/how-to-avoid-latex-error-environment-axis-undefined-when-using-include-tikz : 
+\usepackage{pgfplots}
+% https://tex.stackexchange.com/questions/81899/what-does-running-in-backwards-compatibility-mode-mean-and-what-should-i-fix-t
+\pgfplotsset{compat=1.17}
+\usepackage{pstricks-add}
+\usetikzlibrary{arrows}
+\usepackage{mathrsfs}
+\usepackage{ifthen}
+\usepackage{pdfpages}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{datatool}
+\everymath{\displaystyle}
+\usepackage{fancyhdr} 
+\usepackage{hyperref}
+\usepackage{calculator}
+%\usepackage{sagetex}
+%FIN EnTete
+%DEBUT MesCommandes
+
+\setlength{\parindent}{0em}
+
+
+
+% *********************************************************************
+% MODIFIER LA LIGNE SELON LE MODE VOULU : **********************
+\newcommand{\EnonceCorrection}{C}	% E = mode énoncé   C = mode correction 
+% **********************************************************************
+
+
+
+%%%%%%%%%%%%% MetaDonnees.tex %%%%%%%%%%%%%%%%%%%%%
+\newcommand{\AfficheMetaAuteur}{
+% Pour imprimer les métadonnées (à effacer) : 
+{\bf Auteur : \AuteurEx    \hfill Nom de l'exercice : \varnom  \hfill  Version :   \VersionEx }
+
+{\bf Date de création : \DateCreationEx \hfill Date de modification : \DateModificationEx }
+
+{\bf Source de l'exercice : \SourceEx }
+
+{\bf Description : \DescriptionEx}
+
+\hrulefill
+
+}
+%%%%%%%%%%%%% TitreDuTexte %%%%%%%%%%%%%%%%%%%%%
+% #1 :  niveau                   #2 : Titre
+\newcommand{\TitreDuTexte}{
+{\bf \varnom \large   \hfill \NiveauEx Mathématiques \hfill   $ e^{i\pi}+1=0$ }
+
+\bigskip
+\centerline{\bf \large \NomEx}
+\bigskip
+}
+
+%%%%% Quelques commandes personnalisées %%%%%%%%%%%%%%%%%%
+\newcommand{\euro}{\eurologo{}} 
+\newcommand{\e}{\mbox{e}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+\renewcommand{\mathbf}{}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+
+%============================================================
+% POUR L'ENONCE : Le paramètre est l'énoncé \enonce{Ceci est l'énoncé}
+\newcommand{\enonce}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{#1}{ {\bf \it #1}}{} }
+
+% POUR LA CORRECTION : Le paramètre est la solution \correction{Ceci est la correction}
+\newcommand{\correction}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ \ \ \newline 
+ {\bf SOLUTION : } #1}{}
+}
+
+% VARIABLE points par exercices 
+%\newcounter{pointsexercice}
+% Cette variable se remets à 0 à chaque début d'exercice par la commande : \setcounter{pointexercice}{0}
+%\COPY{0}{\pointexercice}
+
+% VARIABLE qui contient le total des points 
+\newcounter{pointssujetTOTAL}
+\setcounter{pointssujetTOTAL}{0}
+\COPY{0}{\pointssujetTOTAL}
+
+% VARIABLE qui contient le numéro de l'exercice : 
+\newcounter{numeroexercice}
+
+\newcommand{\Affichepointsexercice}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{  \ \ \hfill {\bf  Cet exercice comporte  $\pointexercice$  points }}{}
+
+}
+
+\newcommand{\AffichepointssujetTOTAL}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{ \ \ \newline  {\bf Le sujet compte un total de $\pointssujetTOTAL$ \ points.} }{}
+}
+
+% \newcommand{\points}[1]{\setcounter{pointsexercice}{\thepointsexercice + #1} {\bf [#1 point(s)]}} 
+\newcommand{\points}[1]{\ADD{#1}{\pointexercice}{\pointexercice} \ADD{#1}{\pointssujetTOTAL}{\pointssujetTOTAL}  {\bf [#1 point(s)]}}
+
+\newcommand{\poids}[1]{ {\bf [poids = #1 \%]}}
+
+\newcommand{\EXERCICE}{
+% On ajoute 1 au numéro de l'exercice :
+\setcounter{numeroexercice}{\thenumeroexercice + 1}
+% On remet à zéro les points de l'exercice 
+\COPY{0}{\pointexercice}
+
+\bigskip
+{\bf EXERCICE \thenumeroexercice \ (Tous les résultats doivent être justifiés)} 
+
+}
+% Cette commande insère une nouvelle page en mode ENONCE 
+\newcommand{\NouvellePageModeEnonce}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{{\ } \newpage }{} }
+
+% Cette commande insère une nouvelle page en mode CORRECTION 
+\newcommand{\NouvellePageModeCorrection}{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{{\ }  \newpage }{} }
+
+
+% Cette commande seulement mode ENONCE 
+\newcommand{\SeulementModeEnonce}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{E}}{ #1 }{} }
+
+% Cette commande seulement en mode CORRECTION 
+\newcommand{\SeulementModeCorrection}[1]{
+% \EnonceCorrection = E (énoncé seulement) ou C (énoncé et correction)
+\ifthenelse{\equal{\EnonceCorrection}{C}}{ #1 }{} }
+
+% Commande balise pour définir une variable : \var{p}{10} affichera juste 10, mais 
+% le programme reconnaitra la variable p 
+\newcommand{\var}[2]{\fbox{$#2$}_{\fbox{\mbox{\bf #1}}}}
+
+
+%FIN MesCommandes
+%DEBUT MetaAuteur
+\newcommand{\AuteurEx}{} 
+\newcommand{\VersionEx}{} 
+\newcommand{\DateCreationEx}{} 
+\newcommand{\DateModificationEx}{} 
+\newcommand{\SourceEx}{} 
+\newcommand{\NotionsEx}{} 
+\newcommand{\NiveauEx}{} 
+\newcommand{\NomEx}{}
+%FIN MetaAuteur

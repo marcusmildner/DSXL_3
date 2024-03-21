@@ -1,0 +1,174 @@
+\EXERCICE
+\SeulementModeEnonce{\poids{100} }
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\begin{axis}[
+x=1.5cm,y=0.5cm,
+axis lines=middle,
+grid style=dashed,
+ymajorgrids=true,
+xmajorgrids=true,
+xmin=-5.2,
+xmax=6,
+ymin=-8.0,
+ymax=22.25,
+xtick={-5.0,-4.5,...,6},
+ytick={-8.0,-7.0,...,22.0},]
+\clip(-5.17031,-8.06760180995476) rectangle (8.9,22.2);
+%\draw[line width=2.pt,smooth,samples=100,domain=\var{xA}{-3}:\var{xB}{4.}] plot(\x,{(\x)^(2.0)-2*(\x)-5});
+\draw[line width=2.pt,smooth,samples=100,domain=-3.0:4.0] plot(\x,{(\x)^(2.0)-2*(\x)-5});
+\begin{scriptsize}
+\draw[color=black] (-2.5,10.0) node {$(C_f)$};
+\draw[color=black] (5.8,0.5) node {{\bf\it x}};
+\draw[color=black] (0.2,21.5) node {{\bf\it y}};
+%\draw [fill=black] (\var{xA}{-3},10.) circle (2.5pt);
+\draw [fill=black] (-3.,10.) circle (2.5pt);
+%\draw [fill=black] (\var{xB}{4.},3.) circle (2.5pt);
+\draw [fill=black] (4.0,3.) circle (2.5pt);
+\end{scriptsize}
+\end{axis}
+\end{tikzpicture}
+
+On considère $(C_f)$ la courbe représentative d'une fonction $f $ dans un repère.
+
+\bigskip
+\centerline{\bf Partie A}
+
+\begin{description}
+\item[1)] 
+%E>
+Déterminer son ensemble de définition $D$ .
+%E<
+%C>
+L'ensemble de définition est $D = [\var{xA}{-3}\,;\,\var{xB}{4}]$. \poids{5} %en pourcentage
+%C<
+\item[2)] 
+%E>
+Déterminer le maximum et le minimum sur $D$ .
+%E<
+%C>
+Le maximum de $f$ sur $D$ est $10$ \poids{5} %en pourcentage\\
+Le minimum de $f$ sur $D$ est $-6$.  \poids{5} %en pourcentage
+%C<
+\item[3)]  
+\begin{description}
+ \item [a.] 
+%E>
+Quelle est l'image de $0$ ?
+ %E<
+%C>
+ L'image de $0$ est $f(0)=-5$. \poids{5} %en pourcentage
+ %C<
+ \item[b.] 
+%E>
+Quels sont les antécédents de $2$ ?
+ %E<
+%C>
+ Les antécédents de $2$ sont (valeurs approchées) $-1.8$ et $3.7$ \poids{5} %en pourcentage
+ %C<
+\end{description}
+
+\item[4)] 
+%E>
+Résoudre graphiquement les équations 
+%E<
+\begin{description}
+\item[a.] 
+%E>
+$f(x) = 1$
+%E<
+%C>
+$f(x) = 1$ pour $x\approx 3.6$ et $x\approx -1.6$ \poids{5} %en pourcentage
+%C<
+\item[b.] 
+%E>
+$f(x) = 0$.
+%E<
+%C>
+$f(x) = 0$ pour $x\approx -1.5$ et $x\approx 3.5$ \poids{5} %en pourcentage
+%C<
+\end{description}
+
+\item[5)]  
+%E>
+Résoudre graphiquement l'inéquation $f(x)\geq -3$.
+%E<
+%C>
+Par lecture graphique on trouve $S =\var{ques5solS}{ [-3\,;\,-0.7] \cup  [2.7\,;\,4]}$ \poids{5} %en pourcentage
+%C<
+\item[6)] 
+%E>
+Dresser la tableau de variation sur $D$ .
+%E<
+%C>
+\begin{center}
+\begin{tabular}{|l|lllll|} \hline
+$x$ & $\var{xA}{-3}$ &  & $1$ &  & $\var{xB}{4}$\\ \hline
+ & $10$ &  &  &  & $3$\\ 
+$f(x)$ &  & $\searrow$ &  & $\nearrow$ & \\
+ &  &  & $-6$ &  & \\ \hline
+\end{tabular}
+\end{center}
+\poids{10} %en pourcentage
+%C<
+\end{description}
+
+\bigskip
+\centerline{\bf Partie B}
+\bigskip
+%E>
+On sait maintenant, en plus, que f est définie par $f(x) = x^2-2 x -5$.
+%E<
+\begin{description}
+\item[1)] 
+%E>
+Déterminer les images de $-1$, $0$ et $\sqrt{2}$.
+%E<
+%C>
+On a : 
+\begin{eqnarray*}
+ f(-1) &=& (-1)^2 - 2 \times (-1) -5 = -2\\
+  f(0) &=& 0^2 - 2 \times 0 -5 = -5\\
+    f(\sqrt{2}) &=& (\sqrt{2})^2 - 2 \times \sqrt{2} -5 \\
+     &=& 2 - 2 \times \sqrt{2} -5 \\
+       &=& -3 - 2  \sqrt{2}  
+\end{eqnarray*}
+\poids{15} %en pourcentage
+%C<
+\item[2)] 
+%E>
+Montrer que $f(x) = (x-1)^2 -6 $. 
+%E<
+%C>
+\begin{eqnarray*}
+ (x-1)^2 -6  &=& x^2 - 2 x\times 1 + 1^2 - 6 \\
+  &=& x^2 - 2 x -5 \\
+  &=& f(x) 
+\end{eqnarray*}
+\poids{10} %en pourcentage
+%C<
+
+\item[3)] 
+%E>
+Déterminer les éventuels antécédents de $0$ et $5$ . On donnera les solutions exactes. 
+%E<
+%C>
+Il faut résoudre $f(x)=0$ : 
+\begin{eqnarray*}
+ f(x) &=& 0 \\
+ (x-1)^2 -6  &=&0 \\
+ (x-1)^2 -(\sqrt{6})^2  &=&0 \\
+ (x-1-\sqrt{6})  (x-1+\sqrt{6}) &=&0 \\
+\end{eqnarray*}
+Donc (propriété équation-produit), comme $1+\sqrt{6}\in D$ et $1-\sqrt{6}\in D$, on a l'ensemble des solutions $ S = \{1+\sqrt{6} \,;\,1-\sqrt{6} \}$\poids{10} %en pourcentage
+
+Il faut résoudre $f(x)=5$ : 
+\begin{eqnarray*}
+ f(x) &=&5 \\
+ (x-1)^2 -6  &=&5 \\
+  (x-1)^2 -11  &=&0 \\
+ (x-1)^2 -(\sqrt{11})^2  &=&0 \\
+ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0 \\
+\end{eqnarray*}
+Donc (propriété équation-produit), comme $1+\sqrt{11}\not\in D$ et $1-\sqrt{11}\in D$, on a l'ensemble des solutions $ S = \{1-\sqrt{11} \}$\poids{15} %en pourcentage
+%C<
+\end{description}
