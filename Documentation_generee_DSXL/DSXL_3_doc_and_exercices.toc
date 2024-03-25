@@ -1,4 +1,4 @@
-\babel@toc {french}{}
+\babel@toc {french}{}\relax 
 \contentsline {chapter}{Introduction}{i}{chapter*.1}%
 \contentsline {chapter}{\numberline {1}Organisation du document}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Liste d'exercices}{3}{chapter.2}%
@@ -17,9 +17,12 @@
 \contentsline {subsection}{\numberline {3.2.2}Etape 7 : Entrer les formules pour calculer les réponses }{27}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}L'onglet \underline {Testing Exercise}}{33}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Synthèse de ce qui a été fait jusqu'à présent}{33}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Intégration de {\bf $python\_contraintes.py$} dans {\bf $fonction\_param\_exercice\_run.py$}}{33}{subsection.3.3.2}%
-\contentsline {chapter}{\numberline {4}Créer un devoir : Le programme dsxl$\_$3$\_$devoir$\_$creation}{35}{chapter.4}%
-\contentsline {chapter}{\numberline {A}Liste des mots clés}{37}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Mettre à jour ce document : dsxl$\_$3$\_$documentation$\_$creation}{39}{appendix.B}%
-\contentsline {chapter}{Bibliography}{41}{appendix*.5}%
-\contentsline {chapter}{Index}{43}{appendix*.6}%
+\contentsline {subsection}{\numberline {3.3.2}Intégration de {\bf $python\_contraintes.py$} dans {\bf $fonction\_param\_exercice\_run.py$}}{34}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}corriger les erreurs et écarter les variantes de paramètres indésirables (énoncés triviaux, par exemple)}{34}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Définir les métavariables : notions abordées, auteur, source, date de création }{38}{subsection.3.3.4}%
+\contentsline {chapter}{\numberline {4}Intégrer un exercice crée dans la base des exercices}{39}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Créer un devoir : Le programme dsxl$\_$3$\_$devoir$\_$creation}{41}{chapter.5}%
+\contentsline {chapter}{\numberline {A}Liste des mots clés}{43}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Mettre à jour ce document : dsxl$\_$3$\_$documentation$\_$creation}{45}{appendix.B}%
+\contentsline {chapter}{Bibliography}{47}{appendix*.5}%
+\contentsline {chapter}{Index}{49}{appendix*.6}%

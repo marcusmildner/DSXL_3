@@ -1,6 +1,6 @@
-This is makeindex, version 2.15 [TeX Live 2020] (kpathsea + Thai support).
-Scanning input file dsxlindex.idx....done (10 entries accepted, 0 rejected).
-Sorting entries....done (36 comparisons).
-Generating output file dsxlindex.ind....done (26 lines written, 0 warnings).
+This is makeindex, version 2.17 [TeX Live 2023] (kpathsea + Thai support).
+Scanning input file dsxlindex.idx....done (27 entries accepted, 0 rejected).
+Sorting entries....done (143 comparisons).
+Generating output file dsxlindex.ind....done (39 lines written, 0 warnings).
 Output written in dsxlindex.ind.
 Transcript written in dsxlindex.ilg.

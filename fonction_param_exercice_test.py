@@ -34,7 +34,9 @@ def fonction_param_exercice() :
                               r'ensSdeuxant:\{1+\sqrt{6} \,;\,1-\sqrt{6} \}' , 
                               r'quespBq3sol1ant:\begin{array}{lll} f(x) &=&5 \\ (x-1)^2 -6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=&0 \\ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0\end{array}' ,
                               r'x1unant:1+\sqrt{11}\not\in D' , 'x2unant:1-\sqrt{11}\in D' , 
-                              r'ensSunant: \{1-\sqrt{11} \}' ]
+                              r'ensSunant: \{1-\sqrt{11} \}' ,
+                              r'y0p:-6' , 'yAp:10' , 'yBp:3' , 
+                              r'y0m: ' , 'yAm: ' , 'yBm: ' ]
         }
 
  
@@ -65,7 +67,9 @@ def fonction_param_exercice() :
                               r'ensSdeuxant:\{1+\sqrt{6} \,;\,1-\sqrt{6} \}' , 
                               r'quespBq3sol1ant:\begin{array}{lll} f(x) &=&5 \\ (x-1)^2 -6  &=&5 \\  (x-1)^2 -11  &=&0 \\ (x-1)^2 -(\sqrt{11})^2  &=&0 \\ (x-1-\sqrt{11})  (x-1+\sqrt{11}) &=&0\end{array}' ,
                               r'x1unant:1+\sqrt{11}\not\in D' , 'x2unant:1-\sqrt{11}\in D' , 
-                              r'ensSunant: \{1-\sqrt{11} \}' ]] 
+                              r'ensSunant: \{1-\sqrt{11} \}' ,
+                              r'y0p:-6' , 'yAp:10' , 'yBp:3' , 
+                              r'y0m: ' , 'yAm: ' , 'yBm: '  ]] 
     def antecedents(a,x0,y0,y) :
         lst_antecedent =[]
         # a x**2 - 2*a*x0*x + a*x0**2 +y0 - y = 0 est à résoudre
@@ -109,7 +113,9 @@ def fonction_param_exercice() :
     counter = 0
     for xA in range(xmin+margex,-margex+1): #  Contrainte c3 A
         for xB in range(margex,xmax-margex+1): #  Contrainte c3 B 
-            for x0 in range(xA+1,xB): #  Contrainte c6
+            lst_x0 = [x for x in range(xA+1,xB)]
+            lst_x0.remove(0) # On exclut x0=0
+            for x0 in lst_x0: #  Contrainte c6
                 for a in [-1,1]: 
                     if xA+xB!=2*x0: #  Contrainte c5
                         for y0 in range(ymin+margey,ymax-margey+1): #  Contrainte c7
@@ -282,16 +288,34 @@ def fonction_param_exercice() :
                                             str_x2unant = sym.latex(lst_ant[1])+r'\not\in D'
 
                                         str_ensSunant = r'\{'+strxSol+'\}' 
-
-                                        liste_liste_parametres.append( [ 'xA:'+str_xA , 'xB:'+str_xB , 'ftikz:'+str_ftikz , 'ymaxpAq2:'+str_ymaxpAq2 , 'yminpAq2:'+str_yminpAq2 , 'ypAq3a:'+str_ypAq3a , 'ypAq3b2ant:'+str_ypAq3b2ant , 'xpAq3bsol1:'+str_xpAq3bsol1 , 'xpAq3bsol2:'+str_xpAq3bsol2 , 'ypAq4a1ant:'+str_ypAq4a1ant , 'ques4aSol:'+str_ques4aSol , 'ypAq4a0ant:'+str_ypAq4a0ant , 'quespA4bSol:'+str_quespA4bSol , 'ypAq5:'+str_ypAq5 , 'ques5solS:'+str_ques5solS , 'x0:'+str_x0 , 'yA:'+str_yA , 'yB:'+str_yB , 'varGpAq6:'+str_varGpAq6 , 'varDpAq6:'+str_varDpAq6 , 'y0:'+str_y0 , 'fdev:'+str_fdev , 'f0pBq1:'+str_f0pBq1 , 'fm1pBq1:'+str_fm1pBq1, 'fm2pBq1:'+str_fm2pBq1 , 'fcan:'+str_fcan , 'formecanpBq2et1:'+str_formecanpBq2et1 , 'formecanpBq2et2:'+str_formecanpBq2et2 , 'ypBq3deuxant:'+str_ypBq3deuxant , 'ypBq3unant:'+str_ypBq3unant , 'quespBq3sol2ant:'+str_quespBq3sol2ant , 'x1deuxant:'+str_x1deuxant , 'x2deuxant:'+str_x2deuxant , 'ensSdeuxant:'+str_ensSdeuxant , 'quespBq3sol1ant:'+str_quespBq3sol1ant , 'x1unant:'+str_x1unant , 'x2unant:'+str_x2unant , 'ensSunant:'+str_ensSunant ]) 
+                                        # Attribution des six nouvelles variables : 
+                                        if a> 0 :
+                                            str_yAp = str_yA
+                                            str_y0p = str_y0
+                                            str_yBp = str_yB
+                                            str_yAm = ' '
+                                            str_y0m = ' '
+                                            str_yBm = ' '
+                                        else : 
+                                            str_yAm = str_yA
+                                            str_y0m = str_y0
+                                            str_yBm = str_yB
+                                            str_yAp = ' '
+                                            str_y0p = ' '
+                                            str_yBp = ' '
+                                            
+                                            
+                                        liste_liste_parametres.append( [ 'xA:'+str_xA , 'xB:'+str_xB , 'ftikz:'+str_ftikz , 'ymaxpAq2:'+str_ymaxpAq2 , 'yminpAq2:'+str_yminpAq2 , 'ypAq3a:'+str_ypAq3a , 'ypAq3b2ant:'+str_ypAq3b2ant , 'xpAq3bsol1:'+str_xpAq3bsol1 , 'xpAq3bsol2:'+str_xpAq3bsol2 , 'ypAq4a1ant:'+str_ypAq4a1ant , 'ques4aSol:'+str_ques4aSol , 'ypAq4a0ant:'+str_ypAq4a0ant , 'quespA4bSol:'+str_quespA4bSol , 'ypAq5:'+str_ypAq5 , 'ques5solS:'+str_ques5solS , 'x0:'+str_x0 , 'yA:'+str_yA , 'yB:'+str_yB , 'varGpAq6:'+str_varGpAq6 , 'varDpAq6:'+str_varDpAq6 , 'y0:'+str_y0 , 'fdev:'+str_fdev , 'f0pBq1:'+str_f0pBq1 , 'fm1pBq1:'+str_fm1pBq1, 'fm2pBq1:'+str_fm2pBq1 , 'fcan:'+str_fcan , 'formecanpBq2et1:'+str_formecanpBq2et1 , 'formecanpBq2et2:'+str_formecanpBq2et2 , 'ypBq3deuxant:'+str_ypBq3deuxant , 'ypBq3unant:'+str_ypBq3unant , 'quespBq3sol2ant:'+str_quespBq3sol2ant , 'x1deuxant:'+str_x1deuxant , 'x2deuxant:'+str_x2deuxant , 'ensSdeuxant:'+str_ensSdeuxant , 'quespBq3sol1ant:'+str_quespBq3sol1ant , 'x1unant:'+str_x1unant , 'x2unant:'+str_x2unant , 'ensSunant:'+str_ensSunant , 
+        'yAp:'+str_yAp , 'y0p:'+str_y0p ,'yBp:'+str_yBp,    'yAm:'+str_yAm , 'y0m:'+str_y0m ,'yBm:'+str_yBm ]) 
  
 
 
     return dico_exercice, liste_liste_parametres 
 
 
-#dico_exercice, liste_liste_parametres = fonction_param_exercice()
+dico_exercice, liste_liste_parametres = fonction_param_exercice()
 
-#print(len(liste_liste_parametres))
+print(len(liste_liste_parametres))
+
 
 

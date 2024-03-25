@@ -8,7 +8,7 @@
 
 % https://en.wikibooks.org/wiki/LaTeX/Indexing#:~:text=If%20you%20have%20an%20existing,options%20to%20make%20multiple%20indices.
 \makeindex[name=notions,title=Index des notions mathématiques,columns=3]
-\makeindex[name=dsxlindex,title=Index des mots clés du programme DSXL,columns=3]
+\makeindex[name=dsxlindex,title=Index des mots clés du programme DSXL,columns=2]
 
 \usepackage{multicol}
 
@@ -44,7 +44,8 @@
 \newcommand{\EnonceCorrection}{C}	% E = mode énoncé   C = mode correction 
 % **********************************************************************
 
-
+\newcommand{\bouton}[1]{ \index[dsxlindex]{bouton \fbox{#1}} bouton \fbox{#1}}
+\newcommand{\onglet}[1]{ \index[dsxlindex]{onglet \underline{#1}} onglet \underline{#1}}
 
 %%%%%%%%%%%%% MetaDonnees.tex %%%%%%%%%%%%%%%%%%%%%
 \newcommand{\AfficheMetaAuteur}{
@@ -194,6 +195,10 @@
 
 \chapter{Créer un exercice : Le programme dsxl$\_$3$\_$exercice$\_$creation}
 \input{input_files/DSXL_3_doc_and_exercices_CREATION_EXERCICE.tex}
+
+\chapter{Intégrer un exercice crée dans la base des exercices}
+\input{input_files/DSXL_3_doc_and_exercices_INTEGRATION_DEVOIR_DANS_BASE.tex}
+
 
 \chapter{Créer un devoir : Le programme dsxl$\_$3$\_$devoir$\_$creation}
 \input{input_files/DSXL_3_doc_and_exercices_CREATION_DEVOIR.tex}

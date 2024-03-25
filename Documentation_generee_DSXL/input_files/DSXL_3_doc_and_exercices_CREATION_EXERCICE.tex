@@ -34,7 +34,7 @@ L'exemple que nous allons prendre sera celui d'une étude de fonction quadratiqu
 \end{remarque}
  
 \begin{dsxl}
- Dans l'onglet \underline{Latex wrapper}, le \index[dsxlindex]{bouton \fbox{WRAP UP!}} effectue les actions suivantes :
+ Dans l'\onglet{Latex wrapper}, le \bouton{WRAP UP!} effectue les actions suivantes :
  \begin{enumerate}
   \item Sauvegarde la zone de texte à gauche dans le fichier :\\
    {\bf DSXL\_3\_programme/dsxl\_tex\_exercice/dsxl\_text\_latex\_wrapper\_in.tex}. 
@@ -48,7 +48,7 @@ L'exemple que nous allons prendre sera celui d'une étude de fonction quadratiqu
  
  Il est important de travailler de manière incrémentielle : 
  \begin{description}
-  \item [1.] Ajouter/Copier le code dans la zone de texte à gauche et cliquer sur le bouton \fbox{WRAP UP!}
+  \item [1.] Ajouter/Copier le code dans la zone de texte à gauche et cliquer sur le \bouton{WRAP UP!}
   \item[2.] Compiler le fichier \\
         {\bf\small DSXL\_3\_programme/dsxl\_tex\_exercice/latex\_wrapper\_in\_full/dsxl\_text\_latex\_wrapper\_in.tex}
   \item[3.] Vérifier qu'il n'y a pas d'erreurs et que le pdf généré corresponde bien à ce que l'on veut. 
@@ -59,7 +59,7 @@ L'exemple que nous allons prendre sera celui d'une étude de fonction quadratiqu
 \begin{remarque}
  Pour des raisons de lisibilité, on peut completer le code Latex dans l'éditeur Latex (par exemple avec Kile) et travailler dans cet éditeur pour plus de confort. 
  Mais il ne faudra pas oublier de copier le texte de l'exercice (à partir de $\backslash$EXERCICE jusqu'à AVANT  $\backslash$end$\{$document$\}$). \\
- Il faudra aussi penser à ne pas cliquer sur le bouton \fbox{WRAP UP!}, car sinon les modifications seront perdues! 
+ Il faudra aussi penser à ne pas cliquer sur le \bouton{WRAP UP!}, car sinon les modifications seront perdues! 
 \end{remarque}
 
 
@@ -248,7 +248,7 @@ L'ensemble de définition est $D = [-3\,;\,4]$.
 %C<
 \end{verbatim}
 
-Si on clique sur le bouton \fbox{WRAP UP!}, on obtient à droite le text suivant : 
+Si on clique sur le \bouton{WRAP UP!}, on obtient à droite le text suivant : 
 
 \begin{verbatim}
  On considère $(C_f)$ la courbe représentative d'une fonction $f $ dans un repère.
@@ -330,7 +330,7 @@ On constate que seul l'énoncé est présent.
 
 \begin{dsxl}
  Selon le devoir, un exercice va avoir un nombre de points variable. C'est pourquoi on indiquera le poids de la question en pourcentage. 
-Le bouton bouton \fbox{$\backslash$poids$\{\}$\% en pourcentage} \index[dsxlindex]{bouton \fbox{$\backslash$poids$\{\}$\% en pourcentage}} permet cela. 
+Le \bouton{$\backslash$poids$\{\}$\% en pourcentage} permet cela. 
 \end{dsxl}
 
 La \index[dsxlindex]{convention barème} suivante sera utilisée dans les exercices : 
@@ -356,7 +356,7 @@ va, dans un devoir où cet exercice vaudra 10 points, être remplacée par
  car $10\times \frac{60}{100} = 6$. 
 \end{dsxl}
 
-Après avoir cliqué sur le bouton  \fbox{$\backslash$poids$\{\}$\% en pourcentage}, la compilation de \\
+Après avoir cliqué sur le \bouton{$\backslash$poids$\{\}$\% en pourcentage}, la compilation de \\
 {\bf\small DSXL\_3\_programme/dsxl\_tex\_exercice/latex\_wrapper\_in\_full/dsxl\_text\_latex\_wrapper\_out.tex}
 (qui a été modifié) donne en mode E (la commande $\backslash$SeulementModeEnonce{ $\backslash$poids\{100\} a été insérée après $\backslash$EXERCICE )  :
  \begin{center}
@@ -382,10 +382,10 @@ en mode C donne :
 
 \subsection{Etape 4 : Définir les variables qui changeront en fonction de l'énoncé}
 
-Nous abordons ici la phase la plus cruciale de la création de variations de l'exercice. Pour cela il faut expliquer le rôle du bouton  \fbox{$\backslash$var$\{\}\{\}$} :
+Nous abordons ici la phase la plus cruciale de la création de variations de l'exercice. Pour cela il faut expliquer le rôle du \bouton{$\backslash$var$\{\}\{\}$} :
 
 \begin{dsxl}
- Le rôle du bouton \fbox{$\backslash$var$\{\}\{\}$} \index[dsxlindex]{bouton  \fbox{$\backslash$var$\{\}\{\}$}} est le suivant : \\
+ Le rôle du \bouton{$\backslash$var$\{\}\{\}$}  est le suivant : \\
 Il identifie les valeurs numériques, les expressions, les équations qui sont variables dans l'énoncé. Le premier argument est le nom de la variable, 
   qui peut être une chaîne de caractères sans caractères spéciaux, comme $\%$, etc... \\
   Le second argument contient la part de texte qui sera modifiée. \\
@@ -409,7 +409,7 @@ L'ensemble de définition est $D = [\var{xA}{-3}\,;\,\var{xB}{4}]$. \poids{5} %e
 %C<
 \end{verbatim}
 
-Cliquons sur le bouton  \fbox{WRAP UP!} et compilons le fichier \\
+Cliquons sur le \bouton{WRAP UP!} et compilons le fichier \\
 {\bf DSXL\_3\_programme/dsxl\_tex\_exercice/latex\_wrapper\_in\_full/dsxl\_text\_latex\_wrapper\_out.tex}.
 
 La partie concernée apparaît maintenant comme cela : 
@@ -422,7 +422,7 @@ La partie concernée apparaît maintenant comme cela :
 \end{figure}
 
 \begin{remarque}
- Il est possible de voir la liste de toutes les les insertions en allant sur l'onglet \underline{python wrapper} et en regardant le menu déroulant à droite de {\bf Liste variables} :
+ Il est possible de voir la liste de toutes les les insertions en allant sur l'\onglet{python wrapper} et en regardant le menu déroulant à droite de {\bf Liste variables} :
  \begin{figure}[h]
  \centering
  \includegraphics[width=18cm,height=1cm]{./images/creation_exercice_var_02.png}
@@ -776,7 +776,7 @@ Les variables peuvent maintenant être separées en deux groupes :
 \section{L'onglet \underline{python wrapper}}
 \subsection{Etape 6 : Définir la fonction def $fonction\_param\_exercice()$ : }
 
-Pour cela il faut aller sur l'onglet \underline{python wrapper} et cliquer sur le bouton \fbox{Nouvelle fonction python}. 
+Pour cela il faut aller sur l'onglet \underline{python wrapper} et cliquer sur le \bouton{Nouvelle fonction python}. 
 Ensuite deux fois répondre oui au messages qui se présentent. 
 
 Le programme génère alors un caneva (prototype) de programme qu'il faudra copier et coller dans un fichier python que l'on pourra appeler
@@ -1477,7 +1477,7 @@ Petit rappel des épisodes précédents en étapes principales :
  \end{description}
  \item[III. ] Ecriture du programme  {\bf python\_contraintes.py}. Celle-ci doit se faire en premier, car c'est grace à elle 
     qu'une estimation du nombre de variantes de l'exercices pourra être faite. 
- \item[IV. ] Prendre le caneva généré par bouton \fbox{Nouvelle fonction python} dans l'onglet \underline{python wrapper} et le rendre executable.
+ \item[IV. ] Prendre le caneva généré par \bouton{Nouvelle fonction python} dans l'\onglet{python wrapper} et le rendre executable.
   On pourra appeler ce programme {\bf $fonction\_param\_exercice\_raw.py$} par exemple (raw signifiant brute).
   Le programme lui-même génère un fichier {\bf $dsxl\_text\_python\_wrapper\_out.py$}
  \item[VII. ] Modifier  {\bf $fonction\_param\_exercice\_raw.py$} pour calculer les valeurs des VC en fonction des VL. 
@@ -1487,9 +1487,9 @@ Petit rappel des épisodes précédents en étapes principales :
 Avant d'aller plus loin (c'est-à-dire intégrer {\bf $python\_contraintes.py$} dans  {\bf $fonction\_param\_exercice\_run.py$}), il est nécessaire de tester si le code 
 Latex dans lequel sont remplacés les VC, est compilable. 
 
-Cela se fait  dans l'onglet \underline{Testing Exercise}. 
+Cela se fait  dans l'\onglet{Testing Exercise}. 
 
-Le bouton \fbox{Load {\bf $dsxl\_text\_python\_wrapper\_out.py$}} effectue les actions suivantes : 
+Le \bouton{Load {\bf $dsxl\_text\_python\_wrapper\_out.py$}} effectue les actions suivantes : 
 \begin{description}
  \item[Action 1 : ]Le programme vérifie l'existence de {\bf $fonction\_param\_exercice\_test.py$} (à la racine du dossier {\bf $DSXL\_3\_programme$}) et le charge. 
  Si ce programme n'existe pas, c'est le  programme {\bf $./dsxl\_tex\_exercice/dsxl\_text\_python\_wrapper\_out.py$} qu'il charge.
@@ -1501,7 +1501,7 @@ Le bouton \fbox{Load {\bf $dsxl\_text\_python\_wrapper\_out.py$}} effectue les a
 Dans le cas de notre exercice, nous copions {\bf $fonction\_param\_exercice\_run.py$} à la racine du dossier {\bf $DSXL\_3\_programme$} et nous le renommons. 
 {\bf $fonction\_param\_exercice\_test.py$}. 
 
-En cliquant sur le bouton \fbox{Load {\bf $dsxl\_text\_python\_wrapper\_out.py$}}, le programme vérifie l'existence de {\bf $fonction\_param\_exercice\_test.py$} et le charge,  
+En cliquant sur le \bouton{Load {\bf $dsxl\_text\_python\_wrapper\_out.py$}}, le programme vérifie l'existence de {\bf $fonction\_param\_exercice\_test.py$} et le charge,  
 
 Si tout se passe bien, la liste déroulante qui liste les éléments de la liste {$liste\_liste\_parametres$} contiendra deux entrées : 
 \begin{description}
@@ -1511,7 +1511,7 @@ Si tout se passe bien, la liste déroulante qui liste les éléments de la liste
 
 En cliquant sur les éléments de la liste déroulante, on peut sélectionner et desélectionner les éléments qui apparaitrons à droite dans {\bf List param selection}. 
 
-Le bouton \fbox{Création code Latex} va créer le code Latex complet qui sera copié dans :
+Le \bouton{Création code Latex} va créer le code Latex complet qui sera copié dans :
 \begin{description}
  \item[Choix du mode corrigé (C) : ]
 {\bf $./dsxl\_tex\_exercice/latex\_test\_full\_text\_mode\_C/latex\_test\_full\_text\_C.tex$} 
@@ -1519,5 +1519,251 @@ Le bouton \fbox{Création code Latex} va créer le code Latex complet qui sera c
 {\bf $./dsxl\_tex\_exercice/latex\_test\_full\_text\_mode\_E/latex\_test\_full\_text\_E.tex$} 
 \end{description}
 
+\begin{dsxl}
+ Si la liste déroulante contenant les paramètres est vide, alors il y a une erreur dans le module/programme {\bf $fonction\_param\_exercice\_test.py$}. 
+\end{dsxl}
 
 \subsection{Intégration de {\bf $python\_contraintes.py$} dans  {\bf $fonction\_param\_exercice\_run.py$}}
+
+Cette intégration est maintenant assez facile. Il suffit d'inserer le code  de {\bf $python\_contraintes.py$} dans {\bf $fonction\_param\_exercice\_run.py$} 
+et d'attribuer les VL au différentes valeurs calculées/générées par {\bf $python\_contraintes.py$}.
+
+C'est ce que fait la partie suivante du code :
+
+\begin{verbatim}
+    # La condition suivante permet juste de restreindre le nombre de possibilités en imposant un nombre minimal de solutions : 
+if not(len(list_y_0_sol)<4 or len(list_y_1_sol)<4 or len(list_y_2_sol)<4) : 
+    #print('A(',xA,' , ',yA,' ) B( ',xB,' , ',yB,' ) , P ( ', x0,' , ',y0,' ) \
+    #avec a = ', a, ' f(x) = ',a,' [x - ( ',x0,' )]^2 - ( ',y0,' )' )
+    #print('list_y_0_sol =',list_y_0_sol)
+    #print('list_y_1_sol =',list_y_1_sol)
+    #print('list_y_2_sol =',list_y_2_sol)
+    #counter = counter+1
+
+
+    # Variables dans list_y_2_sol
+    ypBq3deuxant =list_y_2_sol[0]  # VL
+    ypAq5 = list_y_2_sol[1]  # VL
+    ypAq3b2ant =list_y_2_sol[2]  # VL
+
+    # Variables dans list_y_1_sol
+    ypBq3unant = list_y_1_sol[0]  # VL
+    ypAq4a1ant = list_y_1_sol[1] # VL
+    
+    # Variables dans list_y_0_sol
+    ypAq4a0ant = list_y_0_sol[0]  # VL
+    
+
+    str_xA = str(xA) # VL
+    str_xB = str(xB) # VL
+    str_x0 = str(x0)  # VL
+    str_yA = str(yA)  # VL
+    str_yB = str(yB)  # VL        
+    str_y0 = str(y0)  # VL    
+
+\end{verbatim}
+
+\subsection{corriger les erreurs et écarter les variantes de paramètres indésirables (énoncés triviaux, par exemple)} 
+
+Parmi les erreurs les plus fréquentes, il y a :
+
+\begin{description}
+ \item[Graphique : ] Certaines lignes de code latex dans l'environnement graphique sont restées sous forme de commentaires dans 
+ {\bf $latex\_main\_exercice\_test.tex$}. Par exemple :
+  \begin{verbatim}
+%\draw[line width=2.pt,smooth,samples=100,domain=\var{xA}{-3}:\var{xB}{4.}] plot(\x,{\var{ftikz}{(\x)^(2.0)-2*(\x)-5}});
+\draw[line width=2.pt,smooth,samples=100,domain=-3.0:4.0] plot(\x,{(\x)^(2.0)-2*(\x)-5});
+ \end{verbatim}
+ au lieu de : 
+ \begin{verbatim}
+\draw[line width=2.pt,smooth,samples=100,domain=\var{xA}{-3}:\var{xB}{4.}] plot(\x,{\var{ftikz}{(\x)^(2.0)-2*(\x)-5}});
+%\draw[line width=2.pt,smooth,samples=100,domain=-3.0:4.0] plot(\x,{(\x)^(2.0)-2*(\x)-5});
+ \end{verbatim}
+\item[Oubli de variable : ] Parfois un  $\backslash$var$\{\}\{\}$ a été oublié dans l'énoncé : \\
+ \includegraphics[width=10cm,height=4cm]{./images/creation_exercice_solve_erreur_01.png}
+ % creation_exercice_solve_erreur_01.png: 844x371 px, 96dpi, 22.33x9.81 cm, bb=0 0 633 278
+\begin{verbatim}
+ \item[2)] 
+\enonce{ %début énoncé 
+
+Montrer que $f(x) = (x-1)^2 -6 $. 
+} % fin énoncé 
+
+\correction{ %début correction 
+
+\begin{eqnarray*}
+ \var{fcan}{(x-1)^2 -6}  &=& \var{formecanpBq2et1}{x^2 - 2 x\times 1 + 1^2 - 6} \\
+  &=& \var{formecanpBq2et2}{x^2 - 2 x -5 }\\
+  &=& f(x) 
+\end{eqnarray*}
+\poids{10} %en pourcentage
+} % fin correction 
+
+\end{verbatim}
+La correction est alors facile : 
+\begin{verbatim}
+\item[2)] 
+\enonce{ %début énoncé 
+
+Montrer que $f(x) =\var{fcan}{(x-1)^2 -6}$. 
+} % fin énoncé 
+
+\correction{ %début correction 
+
+\begin{eqnarray*}
+ \var{fcan}{(x-1)^2 -6}  &=& \var{formecanpBq2et1}{x^2 - 2 x\times 1 + 1^2 - 6} \\
+  &=& \var{formecanpBq2et2}{x^2 - 2 x -5 }\\
+  &=& f(x) 
+\end{eqnarray*}
+\poids{10} %en pourcentage
+} % fin correction 
+\end{verbatim}
+
+ \includegraphics[width=10cm,height=4cm]{./images/creation_exercice_solve_erreur_01_corrige.png}
+ % creation_exercice_solve_erreur_01.png: 844x371 px, 96dpi, 22.33x9.81 cm, bb=0 0 633 278
+ 
+ \item[Enoncé trop simple : ] Certaines valeurs pour les variables libres (VL) conduisent à des énoncés que l'on souhaite éviter : 
+ 
+ \includegraphics[width=10cm,height=4cm]{./images/creation_exercice_solve_erreur_02.png}
+ % creation_exercice_solve_erreur_01.png: 844x371 px, 96dpi, 22.33x9.81 cm, bb=0 0 633 278
+ 
+Le remède ici est d'exclure la valeur $x0=0$. 
+Le code : 
+\begin{verbatim}
+    for xA in range(xmin+margex,-margex+1): #  Contrainte c3 A
+        for xB in range(margex,xmax-margex+1): #  Contrainte c3 B 
+            for x0 in range(xA+1,xB): #  Contrainte c6
+                for a in [-1,1]: 
+\end{verbatim}
+en :
+\begin{verbatim}
+    for xA in range(xmin+margex,-margex+1): #  Contrainte c3 A
+        for xB in range(margex,xmax-margex+1): #  Contrainte c3 B 
+            lst_x0 = [x for x in range(xA+1,xB)]
+            lst_x0.remove(0) # On exclut x0=0
+            for x0 in lst_x0: #  Contrainte c6
+                for a in [-1,1]: 
+
+\end{verbatim}
+
+\item[Variable oublié : ] Parfois on oublie d'intégrer certaines situations : \\
+ \includegraphics[width=10cm,height=4cm]{./images/creation_exercice_solve_erreur_03.png}
+ % creation_exercice_solve_erreur_01.png: 844x371 px, 96dpi, 22.33x9.81 cm, bb=0 0 633 278
+
+ C'est la situation la plus embêtante, qui peut se résoudre de différentes manières :
+ \begin{description}
+  \item[a) ] Exclure la valeur $a=-1$. Cette solution est la solution de facilité, qui ne va pas être suivie ici. 
+  \item[b) ] Introduire six nouvelles variables : $yAp$, $y0p$, $yBp$ (pour $a=1$) et $yAm$, $y0m$, $yBm$ (pour $a=-1$). 
+  On change dans {\bf $latex\_main\_exercice\_test.tex$} :
+  {\small
+  \begin{verbatim}
+\item[6)] 
+\enonce{ %début énoncé 
+
+Dresser la tableau de variation sur $D$ .
+} % fin énoncé 
+
+\correction{ %début correction 
+
+\begin{center}
+\begin{tabular}{|l|lllll|} \hline
+$x$    & $\var{xA}{-3}$     &                            & $\var{x0}{1}$        &                            & $\var{xB}{4}$\\ \hline
+       & $\var{yA}{10}$     &                            &                      &                            & $\var{yB}{3}$\\ 
+$f(x)$ &                    & $\var{varGpAq6}{\searrow}$ &                      & $\var{varDpAq6}{\nearrow}$ &              \\
+       &                    &                            & $\var{y0}{-6}$       &                            &              \\ \hline
+\end{tabular}
+\end{center}
+\poids{10} %en pourcentage
+} % fin correction    
+  \end{verbatim}
+  }
+  en 
+  {\small
+  \begin{verbatim}
+ \item[6)] 
+\enonce{ %début énoncé 
+
+Dresser la tableau de variation sur $D$ .
+} % fin énoncé 
+
+\correction{ %début correction 
+
+\begin{center}
+\begin{tabular}{|l|lllll|} \hline
+$x$    & $\var{xA}{-3}$     &                            & $\var{x0}{1}$        &                            & $\var{xB}{4}$  \\ \hline
+       & $\var{yAp}{}$    &                            & $\var{y0m}{-6}$      &                            & $\var{yBp}{3}$   \\ 
+$f(x)$ &                    & $\var{varGpAq6}{\searrow}$ &                      & $\var{varDpAq6}{\nearrow}$ &                \\
+       & $\var{yAm}{10}$    &                            & $\var{y0p}{}$      &                            & $\var{yBm}{}$    \\ \hline
+\end{tabular}
+\end{center}
+\poids{10} %en pourcentage
+} % fin correction   
+  \end{verbatim}
+  }
+  Ces nouvelles variables doivent maintenant être insérées/calculées à quatre endroits différents dans $fonction\_param\_exercice\_test.py$ :
+  \begin{enumerate}
+   \item A la fin dans  $dico\_exercice['liste\_variable']$  :
+   \begin{verbatim}
+        r'ensSunant: \{1-\sqrt{11} \}' ,
+    r'x0p: ' , r'yAp:10' , r'yBp:3' , 
+    r'x0m: ' , r'yAm: ' , r'yBm: ' ]
+   \end{verbatim}
+   \item A la fin dans   $liste\_liste\_parametres$  :
+\begin{verbatim}
+        r'ensSunant: \{1-\sqrt{11} \}' ,
+        r'y0p:-6' , 'yAp:10' , 'yBp:3' , 
+        r'y0m: ' , 'yAm: ' , 'yBm: '  ]] 
+    def antecedents(a,x0,y0,y) :
+\end{verbatim}
+\item Dans la partie dans laquelle les variables sont calculées :
+\begin{verbatim}
+                                         str_ensSunant = r'\{'+strxSol+'\}' 
+                                        # Attribution des six nouvelles variables : 
+                                        if a> 0 :
+                                            str_yAp = str_yA
+                                            str_y0p = str_y0
+                                            str_yBp = str_yB
+                                            str_yAm = ' '
+                                            str_y0m = ' '
+                                            str_yBm = ' '
+                                        else : 
+                                            str_yAm = str_yA
+                                            str_y0m = str_y0
+                                            str_yBm = str_yB
+                                            str_yAp = ' '
+                                            str_y0p = ' '
+                                            str_yBp = ' '
+
+\end{verbatim}
+\item Dans $liste\_liste\_parametres.append( [$ : 
+\begin{verbatim}
+, 'quespBq3sol1ant:'+str_quespBq3sol1ant , 'x1unant:'+str_x1unant , 'x2unant:'+str_x2unant , 'ensSunant:'+str_ensSunant , 
+        'yAp:'+str_yAp , 'y0p:'+str_y0p ,'yBp:'+str_yBp,    'yAm:'+str_yAm , 'y0m:'+str_y0m ,'yBm:'+str_yBm ]) 
+\end{verbatim}
+Le résultat est celui attendu : \\
+ \includegraphics[width=10cm,height=4cm]{./images/creation_exercice_solve_erreur_03_correction.png}
+  \end{enumerate}
+
+ \end{description}
+
+\end{description}
+
+\begin{remarque}
+ De manière générale, si un clic sur le \bouton{Création code latex} les fichiers  $latex\_test\_full\_text\_C.tex$ et $latex\_test\_full\_text\_E.tex$ ne sont générés, c'est qu'il y a une erreur dans $fonction\_param\_exercice\_test.py$ ou dans $latex\_main\_exercice\_test.tex$. Généralement, un key error, qui signifie qu'une variable dans le dictionnaire n'est pas trouvé. Le conseil est de regarder le message dans la console d'exécution. 
+\end{remarque}
+
+\subsection{Définir les métavariables : notions abordées, auteur, source, date de création }
+Ces informations peuvent être données de plusieurs manières :
+
+\begin{description}
+ \item[Avec le programme $dsxl\_3\_exercice\_creation.py$ : ] Cela se fait dans l'\onglet{python wrapper}. 
+ \item[Dans le programme $fonction\_param\_exercice\_test.py$] Il suffit de modifier le dictionnaire : 
+ \begin{verbatim}
+      dico_exercice = {
+        'nom_exercice': 'exercice_004' ,
+        'date_creation': '12/03/2024' ,
+        'source': 'Marcus' ,
+        'liste_notions' :  [ '2nd' , 'développement' , 'fonction polynôme' , 'lecture graphique' , 'maximum' , 'tableau de variations' ] , 
+ \end{verbatim}
+
+\end{description}

@@ -8,11 +8,17 @@
 
   \item balises $\%E>$ (début énoncé)  $\%E<$ (fin énoncé),  $\%C>$ (début corrigé)  $\%C<$ (fin corrigé), 
 		\hyperpage{11}, \hyperpage{13}
-  \item bouton  \fbox{$\backslash$var$\{\}\{\}$}, \hyperpage{16}
-  \item bouton \fbox{$\backslash$poids$\{\}$\% en pourcentage}, 
+  \item bouton \fbox  {$\backslash $poids$\{\}$\% en pourcentage}, 
 		\hyperpage{15}
-  \item bouton \fbox{WRAP UP
-    \subitem }, \hyperpage{11}
+  \item bouton \fbox  {$\backslash $var$\{\}\{\}$}, \hyperpage{16}
+  \item bouton \fbox  {Création code Latex}, \hyperpage{33}
+  \item bouton \fbox  {Création code latex}, \hyperpage{38}
+  \item bouton \fbox  {Load {\bf  $dsxl\_text\_python\_wrapper\_out.py$}}, 
+		\hyperpage{33}
+  \item bouton \fbox  {Nouvelle fonction python}, \hyperpage{23}, 
+		\hyperpage{33}
+  \item bouton \fbox  {WRAP UP
+    \subitem }, \hyperpage{11--13}, \hyperpage{17}
 
   \indexspace
 
@@ -22,5 +28,12 @@
 
   \item mode C, \hyperpage{14}
   \item mode E, \hyperpage{14}
+
+  \indexspace
+
+  \item onglet \underline  {Latex wrapper}, \hyperpage{11}
+  \item onglet \underline  {python wrapper}, \hyperpage{17}, 
+		\hyperpage{33}, \hyperpage{38}
+  \item onglet \underline  {Testing Exercise}, \hyperpage{33}
 
 \end{theindex}
