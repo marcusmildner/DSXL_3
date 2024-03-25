@@ -1,5 +1,6 @@
 \begin{theindex}
 
+  \item 2nd, \hyperpage{9}
   \item 3eme, \hyperpage{8}
 
   \indexspace
@@ -14,11 +15,13 @@
 
   \item droites parallèles, \hyperpage{8}
   \item droites perpendiculaires, \hyperpage{3}
+  \item développement, \hyperpage{9}
 
   \indexspace
 
   \item fonction exponentielle, \hyperpage{4}
   \item fonction logarithme, \hyperpage{4}
+  \item fonction polynôme, \hyperpage{9}
   \item fonctions trigonométriques, \hyperpage{8}
 
   \indexspace
@@ -27,7 +30,12 @@
 
   \indexspace
 
+  \item lecture graphique, \hyperpage{9}
   \item limite de suite, \hyperpage{4}
+
+  \indexspace
+
+  \item maximum, \hyperpage{9}
 
   \indexspace
 
@@ -47,6 +55,7 @@
 
   \indexspace
 
+  \item tableau de variations, \hyperpage{9}
   \item terminale spe, \hyperpage{4}
   \item Thalès, \hyperpage{8}
   \item triangle rectangle, \hyperpage{3}, \hyperpage{8}

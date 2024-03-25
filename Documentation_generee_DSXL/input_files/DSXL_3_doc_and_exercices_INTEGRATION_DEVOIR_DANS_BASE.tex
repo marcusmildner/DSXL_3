@@ -1,0 +1,36 @@
+Le résultat final de la création d'un exercice consiste en la production de deux fichiers : 
+
+\begin{description}
+ \item[Fichier Latex : ] $latex\_main\_exercice\_test.tex$
+ \item[Fichier python : ] $fonction\_param\_exercice\_test.py$
+\end{description}
+
+L'intégration se fait maintenant très simplement : 
+
+\begin{description}
+ \item[Etape 1 : ] Il faut ouvrir $./DSXLmodule/list_function_param_exercices.py$ et copier à la fin le contenu de $fonction\_param\_exercice\_test.py$  en prenant soin de modifier le nom de la procedure en lui attribuant un numéro nouveau : 
+ \begin{verbatim}
+#------------------------------------------------------fonction_param_exercice_004
+
+def fonction_param_exercice_004() : 
+
+    dico_exercice = {
+        'nom_exercice': 'exercice_004' ,
+        'date_creation': '12/03/2024' ,
+        'source': 'Marcus' ,
+ \end{verbatim}
+\item[Etape 2 : ]A la fin ajouter les lignes qui vont créer une instance de l'exercice (adapter en fonction du numéro de l'exercice) :
+
+\begin{verbatim}
+ dico_exercice, liste_liste_parametres = fonction_param_exercice_004()
+Ex_004 = Exercice(dico_exercice, liste_liste_parametres)
+\end{verbatim}
+
+\item[Etape 3 : ] Copier le fichier $latex\_main\_exercice\_test.tex$, en le renommant $exercice\_004.tex$ (adapter le nom en fonction du numéro de l'exercice), dans le répertoire : $/DSXLmodule/text\_exercices$. 
+\end{description}
+
+Voilà! L'exercice est maintenant disponible pour être intégré dans un devoir!
+
+\begin{todo} \index[dsxlindex]{To Do : insertion automatique d'un devoir dans la base de données.}
+ L'insertion automatique d'un devoir dans la base de données faite ci-dessus peut être automatisée. C'est une fonctionnalité qu'il faudra à terme implémenter. 
+\end{todo}

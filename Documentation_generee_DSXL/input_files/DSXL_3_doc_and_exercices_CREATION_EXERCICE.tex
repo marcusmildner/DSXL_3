@@ -328,6 +328,7 @@ On constate que seul l'énoncé est présent.
 
 \subsection{Etape 3 : Définir le barème des questions}
 
+\label{convention bareme question}
 \begin{dsxl}
  Selon le devoir, un exercice va avoir un nombre de points variable. C'est pourquoi on indiquera le poids de la question en pourcentage. 
 Le \bouton{$\backslash$poids$\{\}$\% en pourcentage} permet cela. 
@@ -1751,6 +1752,11 @@ Le résultat est celui attendu : \\
 \begin{remarque}
  De manière générale, si un clic sur le \bouton{Création code latex} les fichiers  $latex\_test\_full\_text\_C.tex$ et $latex\_test\_full\_text\_E.tex$ ne sont générés, c'est qu'il y a une erreur dans $fonction\_param\_exercice\_test.py$ ou dans $latex\_main\_exercice\_test.tex$. Généralement, un key error, qui signifie qu'une variable dans le dictionnaire n'est pas trouvé. Le conseil est de regarder le message dans la console d'exécution. 
 \end{remarque}
+
+\begin{todo} \index[dsxlindex]{To Do : insertion variables oubliées}
+ L'insertion des variables ci-dessus peut être automatisée. C'est une fonctionnalité qu'il faudra à terme implémenter. 
+\end{todo}
+
 
 \subsection{Définir les métavariables : notions abordées, auteur, source, date de création }
 Ces informations peuvent être données de plusieurs manières :

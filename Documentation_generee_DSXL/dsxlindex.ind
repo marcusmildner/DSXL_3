@@ -1,39 +1,47 @@
 \begin{theindex}
 
-  \item $\backslash$EXERCICE, \hyperpage{11}
+  \item $\backslash$EXERCICE, \hyperpage{13}
   \item $\backslash$var$\{\}\{\}$ dans un environnement graphique, 
-		\hyperpage{18}
+		\hyperpage{20}
 
   \indexspace
 
   \item balises $\%E>$ (début énoncé)  $\%E<$ (fin énoncé),  $\%C>$ (début corrigé)  $\%C<$ (fin corrigé), 
-		\hyperpage{11}, \hyperpage{13}
+		\hyperpage{13}, \hyperpage{15}
   \item bouton \fbox  {$\backslash $poids$\{\}$\% en pourcentage}, 
-		\hyperpage{15}
-  \item bouton \fbox  {$\backslash $var$\{\}\{\}$}, \hyperpage{16}
-  \item bouton \fbox  {Création code Latex}, \hyperpage{33}
-  \item bouton \fbox  {Création code latex}, \hyperpage{38}
+		\hyperpage{17}
+  \item bouton \fbox  {$\backslash $var$\{\}\{\}$}, \hyperpage{18}
+  \item bouton \fbox  {Création code Latex}, \hyperpage{35}
+  \item bouton \fbox  {Création code latex}, \hyperpage{40}
   \item bouton \fbox  {Load {\bf  $dsxl\_text\_python\_wrapper\_out.py$}}, 
-		\hyperpage{33}
-  \item bouton \fbox  {Nouvelle fonction python}, \hyperpage{23}, 
-		\hyperpage{33}
+		\hyperpage{35}
+  \item bouton \fbox  {Nouvelle fonction python}, \hyperpage{25}, 
+		\hyperpage{35}
   \item bouton \fbox  {WRAP UP
-    \subitem }, \hyperpage{11--13}, \hyperpage{17}
+    \subitem }, \hyperpage{13--15}, \hyperpage{19}
 
   \indexspace
 
-  \item convention barème, \hyperpage{15}
+  \item convention barème, \hyperpage{17}
 
   \indexspace
 
-  \item mode C, \hyperpage{14}
-  \item mode E, \hyperpage{14}
+  \item mode C, \hyperpage{16}
+  \item mode E, \hyperpage{16}
 
   \indexspace
 
-  \item onglet \underline  {Latex wrapper}, \hyperpage{11}
-  \item onglet \underline  {python wrapper}, \hyperpage{17}, 
-		\hyperpage{33}, \hyperpage{38}
-  \item onglet \underline  {Testing Exercise}, \hyperpage{33}
+  \item onglet \underline  {Devoirs : Paramètres}, \hyperpage{44}
+  \item onglet \underline  {Latex wrapper}, \hyperpage{13}
+  \item onglet \underline  {niveau/devoir}, \hyperpage{44}
+  \item onglet \underline  {python wrapper}, \hyperpage{19}, 
+		\hyperpage{35}, \hyperpage{40}
+  \item onglet \underline  {Testing Exercise}, \hyperpage{35}
+
+  \indexspace
+
+  \item To Do : insertion automatique d'un devoir dans la base de données., 
+		\hyperpage{41}
+  \item To Do : insertion variables oubliées, \hyperpage{40}
 
 \end{theindex}

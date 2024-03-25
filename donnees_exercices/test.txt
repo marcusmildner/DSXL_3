@@ -1,1 +1,13 @@
-classe_3eme  classe_seconde  classe_terminale  test.txt
+.:
+classe_3eme
+classe_seconde
+classe_terminale
+test.txt
+
+./classe_3eme:
+2024_sem_09_3eme1.csv
+
+./classe_seconde:
+2024_sem_25_2nd5.csv
+
+./classe_terminale:

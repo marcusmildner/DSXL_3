@@ -1,27 +1,34 @@
-\indexentry{$\backslash$EXERCICE|hyperpage}{11}
-\indexentry{onglet \underline  {Latex wrapper}|hyperpage}{11}
-\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{11}
-\indexentry{balises $\%E>$ (début énoncé)  $\%E<$ (fin énoncé),  $\%C>$ (début corrigé)  $\%C<$ (fin corrigé)|hyperpage}{11}
-\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{11}
-\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{12}
+\indexentry{$\backslash$EXERCICE|hyperpage}{13}
+\indexentry{onglet \underline  {Latex wrapper}|hyperpage}{13}
+\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{13}
 \indexentry{balises $\%E>$ (début énoncé)  $\%E<$ (fin énoncé),  $\%C>$ (début corrigé)  $\%C<$ (fin corrigé)|hyperpage}{13}
 \indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{13}
-\indexentry{mode E|hyperpage}{14}
-\indexentry{mode C|hyperpage}{14}
-\indexentry{bouton \fbox  {$\backslash $poids$\{\}$\% en pourcentage}|hyperpage}{15}
-\indexentry{convention barème|hyperpage}{15}
-\indexentry{bouton \fbox  {$\backslash $poids$\{\}$\% en pourcentage}|hyperpage}{15}
-\indexentry{bouton \fbox  {$\backslash $var$\{\}\{\}$}|hyperpage}{16}
-\indexentry{bouton \fbox  {$\backslash $var$\{\}\{\}$}|hyperpage}{16}
-\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{17}
-\indexentry{onglet \underline  {python wrapper}|hyperpage}{17}
-\indexentry{$\backslash$var$\{\}\{\}$ dans un environnement graphique|hyperpage}{18}
-\indexentry{bouton \fbox  {Nouvelle fonction python}|hyperpage}{23}
-\indexentry{bouton \fbox  {Nouvelle fonction python}|hyperpage}{33}
-\indexentry{onglet \underline  {python wrapper}|hyperpage}{33}
-\indexentry{onglet \underline  {Testing Exercise}|hyperpage}{33}
-\indexentry{bouton \fbox  {Load {\bf  $dsxl\_text\_python\_wrapper\_out.py$}}|hyperpage}{33}
-\indexentry{bouton \fbox  {Load {\bf  $dsxl\_text\_python\_wrapper\_out.py$}}|hyperpage}{33}
-\indexentry{bouton \fbox  {Création code Latex}|hyperpage}{33}
-\indexentry{bouton \fbox  {Création code latex}|hyperpage}{38}
-\indexentry{onglet \underline  {python wrapper}|hyperpage}{38}
+\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{14}
+\indexentry{balises $\%E>$ (début énoncé)  $\%E<$ (fin énoncé),  $\%C>$ (début corrigé)  $\%C<$ (fin corrigé)|hyperpage}{15}
+\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{15}
+\indexentry{mode E|hyperpage}{16}
+\indexentry{mode C|hyperpage}{16}
+\indexentry{bouton \fbox  {$\backslash $poids$\{\}$\% en pourcentage}|hyperpage}{17}
+\indexentry{convention barème|hyperpage}{17}
+\indexentry{bouton \fbox  {$\backslash $poids$\{\}$\% en pourcentage}|hyperpage}{17}
+\indexentry{bouton \fbox  {$\backslash $var$\{\}\{\}$}|hyperpage}{18}
+\indexentry{bouton \fbox  {$\backslash $var$\{\}\{\}$}|hyperpage}{18}
+\indexentry{bouton \fbox  {WRAP UP!}|hyperpage}{19}
+\indexentry{onglet \underline  {python wrapper}|hyperpage}{19}
+\indexentry{$\backslash$var$\{\}\{\}$ dans un environnement graphique|hyperpage}{20}
+\indexentry{bouton \fbox  {Nouvelle fonction python}|hyperpage}{25}
+\indexentry{bouton \fbox  {Nouvelle fonction python}|hyperpage}{35}
+\indexentry{onglet \underline  {python wrapper}|hyperpage}{35}
+\indexentry{onglet \underline  {Testing Exercise}|hyperpage}{35}
+\indexentry{bouton \fbox  {Load {\bf  $dsxl\_text\_python\_wrapper\_out.py$}}|hyperpage}{35}
+\indexentry{bouton \fbox  {Load {\bf  $dsxl\_text\_python\_wrapper\_out.py$}}|hyperpage}{35}
+\indexentry{bouton \fbox  {Création code Latex}|hyperpage}{35}
+\indexentry{bouton \fbox  {Création code latex}|hyperpage}{40}
+\indexentry{To Do : insertion variables oubliées|hyperpage}{40}
+\indexentry{onglet \underline  {python wrapper}|hyperpage}{40}
+\indexentry{To Do : insertion automatique d'un devoir dans la base de données.|hyperpage}{41}
+\indexentry{onglet \underline  {niveau/devoir}|hyperpage}{44}
+\indexentry{onglet \underline  {Devoirs : Paramètres}|hyperpage}{44}
+\indexentry{onglet \underline  {niveau/devoir}|hyperpage}{44}
+\indexentry{onglet \underline  {Devoirs : Paramètres}|hyperpage}{44}
+\indexentry{onglet \underline  {Devoirs : Paramètres}|hyperpage}{44}
